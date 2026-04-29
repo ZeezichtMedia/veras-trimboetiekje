@@ -1,0 +1,79 @@
+---
+import { navItems, site } from '../data/site';
+import { services } from '../data/services';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="mt-32 bg-beige/40 border-t border-line/60">
+  <div class="container-soft py-16 grid gap-12 md:grid-cols-2 lg:grid-cols-4">
+    <div>
+      <div class="font-display text-2xl">Vera's <span class="italic text-rose">Trimboetiekje</span></div>
+      <p class="mt-4 text-sm leading-relaxed">
+        Een rustige, liefdevolle trimsalon waar jouw hond met aandacht en in alle rust verzorgd wordt.
+      </p>
+      <div class="mt-5 flex items-center gap-3">
+        <a href={site.instagram} aria-label="Instagram" target="_blank" rel="noopener"
+          class="grid place-items-center w-9 h-9 rounded-full border border-line text-bark-soft hover:text-rose hover:border-rose/60 transition-colors">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+            <rect x="3" y="3" width="18" height="18" rx="5" />
+            <circle cx="12" cy="12" r="4" />
+            <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" />
+          </svg>
+        </a>
+        <a href={site.facebook} aria-label="Facebook" target="_blank" rel="noopener"
+          class="grid place-items-center w-9 h-9 rounded-full border border-line text-bark-soft hover:text-rose hover:border-rose/60 transition-colors">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M13.5 21v-7.5h2.5l.5-3h-3V8.5c0-.9.3-1.5 1.6-1.5h1.5V4.2c-.3 0-1.2-.1-2.2-.1-2.2 0-3.7 1.3-3.7 3.8v2H8v3h2.7V21h2.8z" />
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <div>
+      <h4 class="font-display text-lg mb-4">Menu</h4>
+      <ul class="space-y-2 text-sm">
+        {navItems.map((i) => (
+          <li><a href={i.href} class="text-bark-soft hover:text-rose transition-colors">{i.label}</a></li>
+        ))}
+      </ul>
+    </div>
+
+    <div>
+      <h4 class="font-display text-lg mb-4">Diensten</h4>
+      <ul class="space-y-2 text-sm">
+        {services.slice(0, 6).map((s) => (
+          <li><a href={`/diensten#${s.slug}`} class="text-bark-soft hover:text-rose transition-colors">{s.title}</a></li>
+        ))}
+      </ul>
+    </div>
+
+    <div>
+      <h4 class="font-display text-lg mb-4">Contact</h4>
+      <address class="not-italic text-sm space-y-2 text-bark-soft">
+        <div>{site.address.street}</div>
+        <div>{site.address.postalCode} {site.address.city}</div>
+        <div class="pt-2">
+          <a href={site.whatsappUrl} class="hover:text-rose transition-colors" target="_blank" rel="noopener">
+            WhatsApp · {site.whatsapp}
+          </a>
+        </div>
+        <div class="pt-2 text-bark-mute">{site.hours}</div>
+      </address>
+      <a href={site.bookingUrl} class="btn-primary mt-5 text-sm">
+        Plan een afspraak
+      </a>
+    </div>
+  </div>
+
+  <div class="border-t border-line/60">
+    <div class="container-soft py-6 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-bark-mute">
+      <div>© {year} Vera's Trimboetiekje · Alle rechten voorbehouden</div>
+      <div class="flex items-center gap-4">
+        <a href="/voorwaarden" class="hover:text-rose transition-colors">Algemene voorwaarden</a>
+        <span class="opacity-40">·</span>
+        <span>Met liefde gemaakt voor honden</span>
+      </div>
+    </div>
+  </div>
+</footer>

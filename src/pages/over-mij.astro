@@ -1,0 +1,92 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Placeholder from '../components/Placeholder.astro';
+import { site } from '../data/site';
+import { photos } from '../data/images';
+---
+
+<Layout
+  title="Over mij"
+  description="Maak kennis met Vera — eigenaresse van Vera's Trimboetiekje. Liefdevolle, rustige hondenverzorging in Berghem, één-op-één en met aandacht."
+>
+  <section class="relative overflow-hidden pt-16 pb-20">
+    <div class="soft-blob bg-nude/30 w-[400px] h-[400px] -top-24 right-0"></div>
+    <div class="container-soft relative grid lg:grid-cols-12 gap-12 items-start">
+      <div class="lg:col-span-5 lg:sticky lg:top-28 reveal">
+        <Placeholder
+          src={photos.about.src}
+          alt={photos.about.alt}
+          variant="nude"
+          ratio="4 / 5"
+          rounded="28px"
+          width={900}
+          loading="eager"
+          class="shadow-card"
+        />
+        <div class="mt-5 grid grid-cols-2 gap-3">
+          <Placeholder
+            src={photos.beerBilly[0].src}
+            alt="Beer — cockapoo van Vera"
+            variant="beige"
+            ratio="1 / 1"
+            rounded="18px"
+            width={500}
+            label="Beer"
+          />
+          <Placeholder
+            src={photos.beerBilly[1].src}
+            alt="Billy — cockapoo van Vera"
+            variant="cream"
+            ratio="1 / 1"
+            rounded="18px"
+            width={500}
+            label="Billy"
+          />
+        </div>
+      </div>
+
+      <div class="lg:col-span-7 reveal">
+        <span class="eyebrow">Over mij</span>
+        <h1 class="mt-4 font-display text-4xl md:text-5xl leading-tight">
+          Hoi, ik ben <span class="italic text-rose">Vera</span>.
+        </h1>
+        <div class="mt-6 space-y-4 text-lg max-w-2xl">
+          <p>
+            Mijn naam is Vera en ik ben de trotse eigenaresse van Vera's Trimboetiekje. Mijn liefde voor honden is eigenlijk altijd al aanwezig geweest, maar die werd pas écht versterkt toen mijn twee cockapoos Beer en Billy in mijn leven kwamen.
+          </p>
+          <p>
+            Met hun vrolijke karakter, zachte vacht en soms ook hun eigen willetje hebben zij mij laten zien hoe belangrijk goede vachtverzorging is — maar vooral hoe belangrijk het is dat een hond zich veilig en op zijn gemak voelt.
+          </p>
+          <p>
+            Niet iedere hond vindt een trimsalon vanzelfsprekend fijn, en juist daarom vind ik het zo belangrijk om hier op een rustige en liefdevolle manier mee om te gaan.
+          </p>
+          <p>
+            In mijn salon werk ik <strong class="text-bark font-medium">één-op-één</strong>, zonder haast en met volledige aandacht voor jouw hond. Ik neem de tijd om te kijken wat jouw hond nodig heeft, zowel qua vacht als gedrag. Geen drukte, geen stress, maar een rustige omgeving waarin jouw hond stap voor stap kan wennen en ontspannen.
+          </p>
+          <p>
+            Voor mij draait het niet alleen om een mooi resultaat, maar vooral om het welzijn van de hond. Een hond die zich prettig voelt tijdens de behandeling, is uiteindelijk ook het mooiste resultaat.
+          </p>
+          <p>
+            Met Vera's Trimboetiekje wil ik een plek creëren waar honden zich veilig voelen en waar baasjes met een gerust hart hun hond achterlaten.
+          </p>
+        </div>
+
+        <div class="mt-10 grid sm:grid-cols-2 gap-4 max-w-xl">
+          <div class="bg-beige/40 rounded-2xl p-5 border border-line/60">
+            <div class="font-display text-2xl text-rose">Eén-op-één</div>
+            <p class="text-sm mt-1">Volledige aandacht, zonder afleiding van andere honden.</p>
+          </div>
+          <div class="bg-beige/40 rounded-2xl p-5 border border-line/60">
+            <div class="font-display text-2xl text-rose">Met de tijd</div>
+            <p class="text-sm mt-1">Geen haast — rust en ruimte voor jouw hond om te wennen.</p>
+          </div>
+        </div>
+
+        <div class="mt-10 flex flex-wrap gap-3">
+          <a href={site.bookingUrl} class="btn-primary">Plan een afspraak</a>
+          <a href="/contact" class="btn-secondary">Stel een vraag</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

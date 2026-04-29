@@ -1,0 +1,87 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ServiceIcon from '../components/ServiceIcon.astro';
+import Placeholder from '../components/Placeholder.astro';
+import { services } from '../data/services';
+import { site } from '../data/site';
+import { serviceImages } from '../data/images';
+---
+
+<Layout
+  title="Diensten"
+  description="Een overzicht van alle behandelingen bij Vera's Trimboetiekje — van complete trimbeurt tot puppy wenbeurt en extra verzorging."
+>
+  <!-- Header sectie -->
+  <section class="relative overflow-hidden pt-16 pb-20">
+    <div class="soft-blob bg-nude/30 w-[400px] h-[400px] -top-32 right-0"></div>
+    <div class="container-soft relative">
+      <span class="eyebrow">Diensten</span>
+      <h1 class="mt-4 font-display text-4xl md:text-5xl lg:text-6xl leading-tight max-w-3xl">
+        Iedere hond is anders en verdient een behandeling die <span class="italic text-rose">past bij hem of haar</span>.
+      </h1>
+      <p class="mt-6 max-w-2xl text-lg">
+        In mijn salon werk ik rustig en met aandacht, zodat jouw hond zich op zijn gemak voelt en de behandeling zo prettig mogelijk verloopt. Twijfel je welke behandeling het beste past? Neem gerust contact op — ik denk graag met je mee.
+      </p>
+    </div>
+  </section>
+
+  <!-- Diensten lijst -->
+  <section class="pb-24">
+    <div class="container-soft space-y-8">
+      {services.map((s, i) => (
+        <article
+          id={s.slug}
+          class:list={[
+            'reveal grid lg:grid-cols-12 gap-8 lg:gap-12 items-center bg-cream rounded-[28px] p-6 md:p-10 border border-line/60',
+            i % 2 === 1 ? 'lg:[&>*:first-child]:order-2' : '',
+          ]}
+        >
+          <div class="lg:col-span-5">
+            <Placeholder
+              src={serviceImages[s.slug]?.src}
+              alt={serviceImages[s.slug]?.alt ?? s.title}
+              variant={i % 3 === 0 ? 'beige' : i % 3 === 1 ? 'nude' : 'cream'}
+              ratio="4 / 3"
+              rounded="20px"
+              width={900}
+              label={`${s.title} — foto volgt`}
+            />
+          </div>
+          <div class="lg:col-span-7">
+            <span class="grid place-items-center w-12 h-12 rounded-full bg-nude/30 text-rose mb-4">
+              <ServiceIcon name={s.icon} />
+            </span>
+            <h2 class="font-display text-2xl md:text-3xl">{s.title}</h2>
+            <div class="mt-4 space-y-3 max-w-xl">
+              {s.body.map((p) => (
+                <p>{p}</p>
+              ))}
+            </div>
+            <div class="mt-6 flex flex-wrap gap-3">
+              <a href="/prijzen" class="btn-secondary text-sm">Bekijk prijzen</a>
+              <a href={site.bookingUrl} class="btn-primary text-sm">Plan een afspraak</a>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="pb-24">
+    <div class="container-soft">
+      <div class="bg-beige/40 rounded-[28px] p-10 md:p-14 text-center max-w-3xl mx-auto border border-line/60">
+        <h2 class="font-display text-2xl md:text-3xl">
+          Twijfel je welke behandeling het <span class="italic text-rose">beste past</span>?
+        </h2>
+        <p class="mt-4 max-w-xl mx-auto">
+          Stuur me gerust een berichtje. Ik help je graag bij de keuze die het beste past bij de vacht én het karakter van jouw hond.
+        </p>
+        <div class="mt-7 flex flex-wrap justify-center gap-3">
+          <a href={site.whatsappUrl} target="_blank" rel="noopener" class="btn-primary">WhatsApp Vera</a>
+          <a href="/contact" class="btn-secondary">Naar contact</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

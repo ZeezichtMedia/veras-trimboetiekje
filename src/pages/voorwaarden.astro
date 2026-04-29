@@ -1,0 +1,164 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { site } from '../data/site';
+
+const sections = [
+  {
+    title: 'Algemeen',
+    body: [
+      "Bij Vera's Trimboetiekje staat het welzijn van jouw hond altijd voorop.",
+      'Ik werk op afspraak en neem de tijd om iedere hond rustig en met aandacht te behandelen.',
+      'Door het maken van een afspraak ga je akkoord met onderstaande voorwaarden.',
+    ],
+  },
+  {
+    title: 'Prijzen & betaling',
+    body: [
+      'De prijs van een behandeling hangt af van de tijd en zorg die nodig zijn voor jouw hond.',
+      'De genoemde prijzen zijn vanaf-prijzen en gelden voor honden met een goed onderhouden, klitvrije vacht.',
+    ],
+    list: ['de staat van de vacht', 'het gedrag van de hond', 'de benodigde tijd', 'de gewenste behandeling'],
+    after: 'Betaling dient direct na de behandeling te worden voldaan.',
+  },
+  {
+    title: 'Extra kosten',
+    body: [
+      'In sommige gevallen vraagt de behandeling extra tijd en aandacht, bijvoorbeeld bij klitten, vervilting, veel onderwol of lastig gedrag.',
+      'Om de kwaliteit en rust te kunnen waarborgen worden hiervoor extra kosten in rekening gebracht.',
+      'Toeslag: €15 per half uur.',
+    ],
+  },
+  {
+    title: 'Vachtconditie',
+    body: [
+      'Het is de verantwoordelijkheid van de eigenaar om de vacht van de hond goed te onderhouden.',
+      'Bij ernstige klitten of vervilting kan het nodig zijn om de hond kort te scheren. Dit gebeurt altijd in het belang van het welzijn van de hond.',
+    ],
+  },
+  {
+    title: 'Klitten & risico',
+    body: [
+      'Bij het verwijderen van klitten of vervilting bestaat een verhoogd risico op huidirritatie of kleine wondjes.',
+      'Dit is een gevolg van de staat van de vacht en valt onder verantwoordelijkheid van de eigenaar.',
+    ],
+  },
+  {
+    title: 'Gedrag',
+    body: [
+      'De hond dient sociaal en hanteerbaar te zijn.',
+      'Indien een hond agressief gedrag vertoont of de behandeling niet veilig uitgevoerd kan worden, behoud ik mij het recht voor om de behandeling te stoppen of aan te passen. De kosten voor de gereserveerde tijd worden in rekening gebracht.',
+    ],
+  },
+  {
+    title: 'Gezondheid',
+    body: [
+      'De hond dient vrij te zijn van besmettelijke ziektes.',
+      'Eventuele medische bijzonderheden, allergieën of gedragsproblemen dienen vooraf gemeld te worden.',
+      "Indien de gezondheid van de hond risico's met zich meebrengt tijdens de behandeling, kan de behandeling worden geweigerd of aangepast.",
+    ],
+  },
+  {
+    title: 'Vlooien',
+    body: [
+      'Mocht tijdens de behandeling blijken dat jouw hond vlooien heeft, ben ik genoodzaakt de behandeling direct te stoppen om besmetting van andere honden en de salon te voorkomen.',
+      'In dit geval dient de hond zo snel mogelijk opgehaald te worden. De kosten voor de gereserveerde tijd worden in rekening gebracht.',
+    ],
+  },
+  {
+    title: 'Loopsheid',
+    body: [
+      'Graag vooraf melden indien jouw hond loops is. In overleg kan de afspraak worden verzet.',
+    ],
+  },
+  {
+    title: 'Aanbetaling (nieuwe klanten)',
+    body: [
+      'Bij nieuwe klanten vraag ik een aanbetaling van 10% van het afgesproken tarief.',
+      'De afspraak is pas definitief nadat de aanbetaling is voldaan.',
+    ],
+  },
+  {
+    title: 'Annuleren & no-show',
+    body: [
+      'Afspraken kunnen kosteloos worden geannuleerd tot 24 uur van tevoren.',
+      'Bij annulering binnen 24 uur of bij het niet verschijnen op de afspraak, ben ik genoodzaakt kosten in rekening te brengen. De aanbetaling vervalt in dit geval.',
+      'Bij herhaaldelijk niet nakomen van afspraken behoud ik mij het recht voor om geen nieuwe afspraken meer in te plannen.',
+    ],
+  },
+  {
+    title: 'Te laat komen & ophalen',
+    body: [
+      'Bij te laat komen kan de behandeling worden ingekort of geannuleerd. De kosten voor de gereserveerde tijd kunnen in rekening worden gebracht.',
+      'Ik werk met een strakke planning, daarom vraag ik je om jouw hond op de afgesproken tijd weer op te halen. Bij te laat ophalen kan extra tijd in rekening worden gebracht.',
+    ],
+  },
+  {
+    title: "Foto's",
+    body: [
+      "Tijdens de behandeling kunnen foto's worden gemaakt van jouw hond voor gebruik op social media of de website.",
+      'Indien je hier bezwaar tegen hebt, kun je dit vooraf aangeven.',
+    ],
+  },
+  {
+    title: 'Aansprakelijkheid',
+    body: [
+      "Vera's Trimboetiekje is niet aansprakelijk voor reeds bestaande aandoeningen of problemen die tijdens of na de behandeling aan het licht komen.",
+      'Eventuele beschadigingen aan de vacht of huid als gevolg van klitten of vervilting vallen onder de verantwoordelijkheid van de eigenaar.',
+    ],
+  },
+  {
+    title: 'Akkoord',
+    body: [
+      'Bij het maken van een afspraak ga je automatisch akkoord met deze voorwaarden.',
+      'In het online boekingssysteem (Salonized) dient akkoord gegeven te worden voordat een afspraak ingepland kan worden.',
+    ],
+  },
+];
+---
+
+<Layout
+  title="Algemene voorwaarden"
+  description="De algemene voorwaarden van Vera's Trimboetiekje — duidelijk en eerlijk, in het belang van jouw hond."
+>
+  <section class="pt-16 pb-12">
+    <div class="container-soft max-w-3xl">
+      <span class="eyebrow">Voorwaarden</span>
+      <h1 class="mt-4 font-display text-4xl md:text-5xl leading-tight">
+        Algemene <span class="italic text-rose">voorwaarden</span>.
+      </h1>
+      <p class="mt-5 text-lg">
+        Bij Vera's Trimboetiekje staat het welzijn van jouw hond altijd voorop. Deze voorwaarden zorgen ervoor dat we daar samen goed mee om kunnen gaan.
+      </p>
+    </div>
+  </section>
+
+  <section class="pb-24">
+    <div class="container-soft max-w-3xl space-y-8">
+      {sections.map((s) => (
+        <article class="reveal bg-cream rounded-[20px] p-6 md:p-8 border border-line/60">
+          <h2 class="font-display text-xl md:text-2xl">{s.title}</h2>
+          <div class="mt-3 space-y-3 text-sm md:text-base">
+            {s.body.map((p) => <p>{p}</p>)}
+            {s.list && (
+              <ul class="list-disc pl-5 space-y-1 marker:text-rose">
+                {s.list.map((li) => <li>{li}</li>)}
+              </ul>
+            )}
+            {s.after && <p>{s.after}</p>}
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="pb-24">
+    <div class="container-soft max-w-3xl">
+      <div class="bg-beige/40 rounded-[28px] p-8 md:p-10 text-center border border-line/60">
+        <p class="text-sm text-bark-mute">
+          Vragen over de voorwaarden? <a href="/contact" class="text-rose hover:underline">Neem gerust contact op</a> — ik leg ze graag toe.
+        </p>
+        <a href={site.bookingUrl} class="btn-primary mt-5">Plan een afspraak</a>
+      </div>
+    </div>
+  </section>
+</Layout>
