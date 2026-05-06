@@ -1,42 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { services } from '../data/services';
 import { site } from '../data/site';
-
-const monthNames = [
-  'januari', 'februari', 'maart', 'april', 'mei', 'juni',
-  'juli', 'augustus', 'september', 'oktober', 'november', 'december',
-];
-const dayNamesShort = ['ma', 'di', 'wo', 'do', 'vr', 'za', 'zo'];
-
-// Bouw een rooster van 14 dagen, vandaag + 13. Voor elke dag tonen we of er
-// nog plek is (placeholder-logica — willekeurig vast patroon zodat het rooster
-// er bij elke render hetzelfde uitziet).
-const today = new Date();
-today.setHours(0, 0, 0, 0);
-const days = Array.from({ length: 14 }, (_, i) => {
-  const d = new Date(today);
-  d.setDate(today.getDate() + i);
-  // Patroon: zondag dicht, anders 0–3 vrije plekken volgens vaste mod-tabel.
-  const dow = d.getDay(); // 0 = zo
-  const closed = dow === 0;
-  const slotPattern = [3, 2, 0, 1, 3, 2, 1];
-  const slotsLeft = closed ? 0 : slotPattern[(d.getDate() + dow) % slotPattern.length];
-  return {
-    iso: d.toISOString().slice(0, 10),
-    date: d.getDate(),
-    month: d.getMonth(),
-    monthLabel: monthNames[d.getMonth()],
-    dowLabel: dayNamesShort[(dow + 6) % 7],
-    isToday: i === 0,
-    closed,
-    slotsLeft,
-  };
-});
-
-const monthLabel = `${monthNames[today.getMonth()]} ${today.getFullYear()}`;
-
-const timeSlots = ['09:00', '10:30', '13:00', '14:30', '16:00'];
 ---
 
 <Layout
@@ -56,176 +20,28 @@ const timeSlots = ['09:00', '10:30', '13:00', '14:30', '16:00'];
           Terug naar home
         </a>
 
-        <div
-          class="mt-6 bg-cream rounded-[28px] border border-line/70 shadow-card overflow-hidden"
-          data-booking
-        >
+        <div class="mt-6 bg-cream rounded-[28px] border border-line/70 shadow-card overflow-hidden">
           <div class="px-7 md:px-10 pt-8 pb-6 border-b border-line/60 bg-beige/30">
             <span class="eyebrow">Online agenda</span>
             <h1 class="mt-3 font-display text-3xl md:text-4xl leading-tight">
               Plan een <span class="italic text-rose">afspraak</span>
             </h1>
             <p class="mt-3 text-sm text-bark-soft max-w-xl">
-              Kies de behandeling, een dag en een tijdstip. Ik bevestig je afspraak persoonlijk via e-mail of WhatsApp.
+              Kies de behandeling, een dag en een tijdstip. Je krijgt direct een bevestiging.
             </p>
           </div>
 
-          <div class="px-7 md:px-10 py-8 space-y-10" data-step-form>
-            <fieldset>
-              <legend class="font-display text-lg">1. Kies een dienst</legend>
-              <div class="mt-4 flex flex-wrap gap-2" role="radiogroup" aria-label="Dienst">
-                {services.map((s, i) => (
-                  <label
-                    class="cursor-pointer text-sm px-4 py-2 rounded-full border border-line bg-cream hover:border-rose/50 transition-colors has-[:checked]:bg-rose has-[:checked]:text-cream has-[:checked]:border-rose"
-                  >
-                    <input
-                      type="radio"
-                      name="service"
-                      value={s.slug}
-                      class="sr-only"
-                      checked={i === 0}
-                    />
-                    {s.title}
-                  </label>
-                ))}
-              </div>
-            </fieldset>
-
-            <fieldset>
-              <div class="flex items-end justify-between gap-4">
-                <legend class="font-display text-lg">2. Kies een dag</legend>
-                <span class="text-xs uppercase tracking-[0.18em] text-bark-mute">{monthLabel}</span>
-              </div>
-
-              <div class="mt-4 grid grid-cols-7 gap-1.5 sm:gap-2" role="radiogroup" aria-label="Datum">
-                {days.map((d) => (
-                  <label
-                    class:list={[
-                      'group relative aspect-square rounded-xl sm:rounded-2xl border text-center transition-colors flex flex-col items-center justify-center px-0.5',
-                      d.closed
-                        ? 'border-line/40 bg-beige/20 text-bark-mute/60 cursor-not-allowed'
-                        : 'border-line bg-cream cursor-pointer hover:border-rose/50 has-[:checked]:bg-rose has-[:checked]:text-cream has-[:checked]:border-rose',
-                    ]}
-                  >
-                    <input
-                      type="radio"
-                      name="date"
-                      value={d.iso}
-                      class="sr-only"
-                      disabled={d.closed}
-                      data-slots={d.slotsLeft}
-                    />
-                    <span class="text-[0.55rem] sm:text-[0.65rem] uppercase tracking-[0.12em] opacity-70">{d.dowLabel}</span>
-                    <span class="font-display text-base sm:text-xl leading-none mt-0.5 sm:mt-1">{d.date}</span>
-                    <span class:list={[
-                      'mt-0.5 sm:mt-1 hidden sm:block text-[0.6rem]',
-                      d.closed ? 'opacity-70' : d.slotsLeft === 0 ? 'opacity-50' : 'opacity-80',
-                    ]}>
-                      {d.closed ? 'vrij' : d.slotsLeft === 0 ? 'vol' : `${d.slotsLeft} plek${d.slotsLeft === 1 ? '' : 'ken'}`}
-                    </span>
-                    {!d.closed && (
-                      <span
-                        class:list={[
-                          'sm:hidden mt-1 w-1 h-1 rounded-full',
-                          d.slotsLeft === 0 ? 'bg-bark-mute/40' : 'bg-rose/70',
-                        ]}
-                        aria-hidden="true"
-                      ></span>
-                    )}
-                    {d.isToday && (
-                      <span class="absolute top-1 right-1 w-1.5 h-1.5 rounded-full bg-rose"></span>
-                    )}
-                  </label>
-                ))}
-              </div>
-
-              <div class="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1.5 text-[0.7rem] text-bark-mute">
-                <span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-rose"></span>vandaag</span>
-                <span class="flex items-center gap-1.5"><span class="w-1 h-1 rounded-full bg-rose/70"></span>plek vrij</span>
-                <span class="flex items-center gap-1.5"><span class="w-1 h-1 rounded-full bg-bark-mute/40"></span>vol / dicht</span>
-              </div>
-            </fieldset>
-
-            <fieldset>
-              <legend class="font-display text-lg">3. Kies een tijd</legend>
-              <div class="mt-4 grid grid-cols-2 sm:grid-cols-5 gap-2" role="radiogroup" aria-label="Tijd">
-                {timeSlots.map((t, i) => (
-                  <label
-                    class="cursor-pointer text-sm px-3 py-3 rounded-xl border border-line bg-cream text-center hover:border-rose/50 transition-colors has-[:checked]:bg-rose has-[:checked]:text-cream has-[:checked]:border-rose"
-                  >
-                    <input
-                      type="radio"
-                      name="time"
-                      value={t}
-                      class="sr-only"
-                      checked={i === 1}
-                    />
-                    {t}
-                  </label>
-                ))}
-              </div>
-            </fieldset>
-
-            <fieldset class="grid sm:grid-cols-2 gap-4">
-              <legend class="sr-only">Jouw gegevens</legend>
-              <label class="block">
-                <span class="block text-xs uppercase tracking-[0.16em] text-bark-mute mb-1.5">Jouw naam</span>
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="Voornaam"
-                  class="w-full px-4 py-3 rounded-xl border border-line bg-cream focus:border-rose focus:outline-none transition-colors"
-                />
-              </label>
-              <label class="block">
-                <span class="block text-xs uppercase tracking-[0.16em] text-bark-mute mb-1.5">Naam hond</span>
-                <input
-                  type="text"
-                  name="dog"
-                  placeholder="Bijv. Beer"
-                  class="w-full px-4 py-3 rounded-xl border border-line bg-cream focus:border-rose focus:outline-none transition-colors"
-                />
-              </label>
-              <label class="block sm:col-span-2">
-                <span class="block text-xs uppercase tracking-[0.16em] text-bark-mute mb-1.5">E-mail of telefoon</span>
-                <input
-                  type="text"
-                  name="contact"
-                  placeholder="zodat ik kan bevestigen"
-                  class="w-full px-4 py-3 rounded-xl border border-line bg-cream focus:border-rose focus:outline-none transition-colors"
-                />
-              </label>
-            </fieldset>
-
-            <div class="pt-2 border-t border-line/60 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-              <p class="text-xs text-bark-mute max-w-sm">
-                Door te bevestigen ga je akkoord met de <a href="/voorwaarden" class="text-rose hover:underline">algemene voorwaarden</a>.
-              </p>
-              <button type="button" class="btn-primary" data-confirm>
-                Bevestig aanvraag
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M5 12h14M13 5l7 7-7 7"/>
-                </svg>
-              </button>
-            </div>
-          </div>
-
-          <div class="hidden px-7 md:px-10 py-12 text-center" data-success>
-            <div class="mx-auto w-14 h-14 rounded-full bg-rose/15 grid place-items-center text-rose">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M20 6L9 17l-5-5"/>
-              </svg>
-            </div>
-            <h2 class="mt-5 font-display text-2xl">
-              Aanvraag <span class="italic text-rose">ontvangen</span>
-            </h2>
-            <p class="mt-3 text-sm text-bark-soft max-w-md mx-auto">
-              Bedankt! Ik bevestig je afspraak zo snel mogelijk persoonlijk via e-mail of WhatsApp. Heb je tussendoor een vraag? Stuur me gerust een berichtje.
-            </p>
-            <div class="mt-6 flex flex-wrap gap-3 justify-center">
-              <a href={site.whatsappUrl} target="_blank" rel="noopener" class="btn-secondary">WhatsApp Vera</a>
-              <a href="/" class="btn-primary">Terug naar home</a>
-            </div>
+          <div class="px-4 md:px-6 py-6">
+            <!-- Salonized booking widget — inline, NL, hoogte 700px -->
+            <div
+              class="salonized-booking"
+              data-company="685TLUuhbERw1WLVd9KyW8jr"
+              data-color="#d0c0af"
+              data-language="nl"
+              data-height="700"
+              data-inline="true"
+              data-outline="shadow"
+            ></div>
           </div>
         </div>
 
@@ -235,21 +51,6 @@ const timeSlots = ['09:00', '10:30', '13:00', '14:30', '16:00'];
       </div>
     </div>
   </section>
+
+  <script is:inline src="https://static-widget.salonized.com/loader.js"></script>
 </Layout>
-
-<script>
-  const root = document.querySelector<HTMLElement>('[data-booking]');
-  if (root) {
-    const form = root.querySelector<HTMLElement>('[data-step-form]');
-    const success = root.querySelector<HTMLElement>('[data-success]');
-    const button = root.querySelector<HTMLButtonElement>('[data-confirm]');
-
-    button?.addEventListener('click', () => {
-      if (form && success) {
-        form.classList.add('hidden');
-        success.classList.remove('hidden');
-        root.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    });
-  }
-</script>
