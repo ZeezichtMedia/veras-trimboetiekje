@@ -5,6 +5,15 @@ const path = Astro.url.pathname;
 const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWith(href));
 ---
 
+<!-- Topbar — secundaire links (algemene voorwaarden bovenaan op elke pagina) -->
+<div class="bg-beige/50 border-b border-line/50 text-bark-mute">
+  <div class="container-soft flex items-center justify-end gap-5 py-1.5 text-[0.7rem] tracking-[0.08em]">
+    <span class="hidden sm:inline">Uitsluitend op afspraak</span>
+    <span class="hidden sm:inline opacity-40">·</span>
+    <a href="/voorwaarden" class="hover:text-rose transition-colors">Algemene voorwaarden</a>
+  </div>
+</div>
+
 <header class="sticky top-0 z-40 backdrop-blur bg-cream/85 border-b border-line/60">
   <div class="container-soft flex items-center justify-between gap-6 py-4">
     <a href="/" class="flex items-center gap-2 group" aria-label="Home — {site.name}">
