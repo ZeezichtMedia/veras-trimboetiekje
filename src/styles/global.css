@@ -172,7 +172,8 @@ html.js .reveal.visible {
   user-select: none;
   touch-action: none;
   background: var(--color-beige);
-  aspect-ratio: 4 / 3;
+  /* Portret-ratio passend bij Vera's eigen foto's (rechtopstaande hond) */
+  aspect-ratio: 4 / 5;
 }
 .ba-img {
   position: absolute;

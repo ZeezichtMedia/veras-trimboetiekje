@@ -9,11 +9,11 @@ export const photos = {
     alt: 'Hond bij verzorging in een rustige trimsalon',
   },
   beforeBefore: {
-    src: u('1517849845537-4d257902454a'),
+    src: '/photos/voor-na-voor.jpg',
     alt: 'Hond met ruige vacht — voor de trimbeurt',
   },
   beforeAfter: {
-    src: u('1601758228041-f3b2795255f1'),
+    src: '/photos/voor-na-na.jpg',
     alt: 'Hond met verzorgde vacht — na de trimbeurt',
   },
   about: {
