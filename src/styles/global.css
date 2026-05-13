@@ -232,9 +232,16 @@ html.js .reveal.visible {
   background: rgba(250, 246, 240, 0.92);
   backdrop-filter: blur(4px);
   pointer-events: none;
+  left: var(--ba-pos, 50%);
 }
-.ba-label-before { left: 12px; }
-.ba-label-after  { right: 12px; }
+/* VOOR-label: net links van de slider-handle, beweegt mee. */
+.ba-label-before {
+  transform: translateX(calc(-100% - 10px));
+}
+/* NA-label: net rechts van de slider-handle, beweegt mee. */
+.ba-label-after {
+  transform: translateX(10px);
+}
 
 /* ── Decorative blobs ────────────────────────── */
 .soft-blob {
