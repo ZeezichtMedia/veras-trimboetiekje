@@ -11,8 +11,8 @@ export const priceGroups: PriceGroup[] = [
     description:
       'Volledige verzorging: wassen, zorgvuldig drogen, ontwollen, knippen of scheren. Inclusief nagels en netjes afwerken.',
     items: [
-      { label: 'Kleine hond (tot 10 kg)', price: '€65' },
-      { label: 'Middelgrote hond (10 – 20 kg)', price: '€80' },
+      { label: 'Kleine hond (tot 10 kg)', price: '€70' },
+      { label: 'Middelgrote hond (10 – 20 kg)', price: '€85' },
       { label: 'Grote hond (20+ kg)', price: '€100' },
     ],
   },
@@ -28,6 +28,34 @@ export const priceGroups: PriceGroup[] = [
     ],
   },
   {
+    title: 'Kortharige honden',
+    description:
+      'Wassen, losse haren verwijderen en indien nodig nagels knippen.',
+    items: [
+      { label: 'Kleine hond (tot 10 kg)', price: '€45' },
+      { label: 'Middelgrote hond (10 – 20 kg)', price: '€55' },
+      { label: 'Grote hond (20+ kg)', price: '€65' },
+    ],
+  },
+  {
+    title: 'Dwergkees & Pomeriaan',
+    description:
+      'Dwergkeesjes en Pomeriaantjes hebben een typische pluche vacht die specifieke kennis en tijd vraagt. Daarom een eigen prijsgroep.',
+    items: [
+      { label: 'Klein (tot 5 kg)', price: '€70' },
+      { label: 'Middelgroot (5+ kg)', price: '€80' },
+    ],
+  },
+  {
+    title: 'Ontwollen',
+    description:
+      'Specifieke behandeling voor honden met veel onderwol — overtollige onderwol verwijderen, vacht weer luchtig en licht.',
+    items: [
+      { label: 'Middelgrote hond', price: '€70' },
+      { label: 'Grote hond', price: '€90' },
+    ],
+  },
+  {
     title: 'Tussenbeurt',
     description:
       'Wassen, drogen, oogjes en voetjes vrij knippen, hygiënische zones bijwerken en nagels controleren.',
@@ -37,16 +65,6 @@ export const priceGroups: PriceGroup[] = [
       { label: 'Grote hond (20+ kg)', price: '€70' },
     ],
     note: 'Niet geschikt voor extreem geklitte of vervilte vachten.',
-  },
-  {
-    title: 'Kortharige honden',
-    description:
-      'Wassen, losse haren verwijderen en indien nodig nagels knippen.',
-    items: [
-      { label: 'Kleine hond (tot 10 kg)', price: '€45' },
-      { label: 'Middelgrote hond (10 – 20 kg)', price: '€55' },
-      { label: 'Grote hond (20+ kg)', price: '€65' },
-    ],
   },
   {
     title: 'Puppy wenbeurt',
@@ -64,9 +82,9 @@ export const priceGroups: PriceGroup[] = [
       { label: 'Nagels knippen', price: '€12,50' },
       { label: 'Oren reinigen', price: '€12,50' },
       { label: 'Oogjes vrij knippen', price: '€12,50' },
-      { label: 'Hygiënische zones bijwerken', price: '€7,50' },
+      { label: 'Hygiënische zones bijwerken', price: '€15' },
       { label: 'Voetjes knippen', price: '€15' },
-      { label: 'Teek verwijderen', price: '€5' },
+      { label: 'Teek verwijderen', price: '€10' },
     ],
   },
 ];
