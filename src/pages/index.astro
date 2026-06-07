@@ -1,270 +1,312 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Placeholder from '../components/Placeholder.astro';
-import BeforeAfterSlider from '../components/BeforeAfterSlider.astro';
-import ServiceIcon from '../components/ServiceIcon.astro';
-import { services } from '../data/services';
-import { site } from '../data/site';
-import { photos } from '../data/images';
+/* ──────────────────────────────────────────────────────────────
+   TIJDELIJKE "BINNENKORT ONLINE"-PAGINA
+   ----------------------------------------------------------------
+   Deze pagina vervangt voorlopig de volledige website. De echte
+   site staat ongewijzigd in  src/pages/_full-site/  (Astro negeert
+   mappen die met een underscore beginnen, dus die routes bouwen
+   niet mee).
 
-const pillars = [
-  { icon: 'leaf', title: 'Rust voorop', text: 'Geen drukte, geen haast — een rustige omgeving waarin jouw hond stap voor stap kan wennen.' },
-  { icon: 'heart', title: 'Tijd voor jouw hond', text: 'Ik neem de tijd voor iedere behandeling. Geen haast, geen druk — alles op een tempo waarin jouw hond zich prettig voelt.' },
-  { icon: 'sparkle', title: 'Met aandacht', text: 'Ik kijk naar wat jouw hond nodig heeft, qua vacht én qua gedrag.' },
-  { icon: 'paw', title: 'Welzijn eerst', text: 'Een mooi resultaat is mooi, maar een ontspannen hond is het mooiste resultaat.' },
-  { icon: 'star', title: 'Boetiek-gevoel', text: 'Een lieve, persoonlijke salon — alsof je hond bij familie op visite gaat.' },
-];
+   TERUGZETTEN bij livegang:
+     1. Verplaats alle bestanden uit  src/pages/_full-site/  terug
+        naar  src/pages/  (de echte index.astro overschrijft dan
+        dit bestand).
+     2. Verwijder de lege  _full-site  map.
+   Eén handeling, verder hoeft er niets aangepast te worden.
+   ────────────────────────────────────────────────────────────── */
+import '../styles/global.css';
+import { site } from '../data/site';
+
+const pageTitle = `Binnenkort online · ${site.name}`;
+const description = `${site.name} in ${site.address.city}. Onze nieuwe website is bijna klaar. Neem alvast contact op via WhatsApp of Instagram.`;
+const canonical = Astro.site ? new URL('/', Astro.site).toString() : '/';
 ---
 
-<Layout
-  title="Hondentrimsalon in Berghem"
-  description="Vera's Trimboetiekje — een rustige, liefdevolle trimsalon in Berghem. Met tijd en aandacht voor de vacht én het welzijn van jouw hond."
->
-  <!-- ── HERO ───────────────────────────────────────────── -->
-  <section class="relative overflow-hidden">
-    <div class="soft-blob bg-nude/40 w-[420px] h-[420px] -top-32 -left-24"></div>
-    <div class="soft-blob bg-rose/25 w-[360px] h-[360px] top-32 right-0"></div>
+<!doctype html>
+<html lang="nl">
+  <head>
+    <script is:inline>document.documentElement.classList.add('js');</script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#FAF6F0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-    <div class="container-soft relative grid lg:grid-cols-2 gap-14 items-center pt-16 pb-24 lg:pt-24 lg:pb-32">
-      <div class="reveal">
-        <span class="eyebrow">Hondentrimsalon · Berghem</span>
-        <h1 class="mt-5 font-display text-5xl md:text-6xl lg:text-7xl leading-[1.05]">
-          Met liefde en
-          <span class="italic text-rose">aandacht</span>
-          voor jouw hond.
-        </h1>
-        <p class="mt-6 max-w-xl text-lg leading-relaxed">
-          Een rustige, liefdevolle trimsalon waar jouw hond met volledige aandacht en in alle rust verzorgd wordt. Geen drukte, geen stress — alleen tijd voor jou en je hond.
-        </p>
-        <div class="mt-8 flex flex-wrap gap-3">
-          <a href={site.bookingUrl} class="btn-primary">
-            Plan een afspraak
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M5 12h14M13 5l7 7-7 7"/>
-            </svg>
-          </a>
-          <a href="/diensten" class="btn-secondary">Bekijk diensten</a>
-        </div>
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <!-- Placeholder voorlopig uit de index houden; bij livegang vervalt dit. -->
+    <meta name="robots" content="noindex, follow" />
 
-        <div class="mt-10 flex items-center gap-5 text-sm text-bark-mute">
-          <div class="flex -space-x-2">
-            <a
-              href={site.instagram}
-              target="_blank"
-              rel="noopener"
-              aria-label={`Instagram — ${site.instagramHandle}`}
-              class="relative grid place-items-center w-9 h-9 rounded-full border-2 border-cream bg-nude text-cream hover:z-10 hover:scale-110 transition-transform"
-            >
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-                <rect x="3" y="3" width="18" height="18" rx="5" />
-                <circle cx="12" cy="12" r="4" />
-                <circle cx="17.5" cy="6.5" r="0.9" fill="currentColor" stroke="none" />
-              </svg>
-            </a>
-            <a
-              href={site.facebook}
-              target="_blank"
-              rel="noopener"
-              aria-label={`Facebook — ${site.facebookHandle}`}
-              class="relative grid place-items-center w-9 h-9 rounded-full border-2 border-cream bg-rose text-cream hover:z-10 hover:scale-110 transition-transform"
-            >
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M13.5 21v-7.5h2.5l.5-3h-3V8.5c0-.9.3-1.5 1.6-1.5h1.5V4.2c-.3 0-1.2-.1-2.2-.1-2.2 0-3.7 1.3-3.7 3.8v2H8v3h2.7V21h2.8z" />
-              </svg>
-            </a>
-            <a
-              href={site.whatsappUrl}
-              target="_blank"
-              rel="noopener"
-              aria-label={`WhatsApp — ${site.whatsapp}`}
-              class="relative grid place-items-center w-9 h-9 rounded-full border-2 border-cream bg-rose-dark text-cream hover:z-10 hover:scale-110 transition-transform"
-            >
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M20.5 3.5A11.7 11.7 0 0012 0C5.4 0 0 5.4 0 12c0 2.1.5 4.1 1.6 5.9L0 24l6.3-1.6A11.9 11.9 0 0012 24c6.6 0 12-5.4 12-12 0-3.2-1.2-6.2-3.5-8.5zM12 21.8a9.8 9.8 0 01-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4A9.8 9.8 0 012.2 12C2.2 6.6 6.6 2.2 12 2.2S21.8 6.6 21.8 12 17.4 21.8 12 21.8z"/>
-              </svg>
-            </a>
-          </div>
-          <span>Werkt uitsluitend op afspraak</span>
-        </div>
-      </div>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
 
-      <div class="reveal relative">
-        <div class="absolute -inset-4 bg-nude/20 blur-2xl rounded-[40px]"></div>
-        <Placeholder
-          src={photos.hero.src}
-          alt={photos.hero.alt}
-          variant="beige"
-          ratio="4 / 5"
-          rounded="32px"
-          width={1100}
-          loading="eager"
-          class="relative shadow-card"
-        />
-        <div class="absolute -bottom-6 -left-6 bg-cream rounded-2xl shadow-card p-5 max-w-[220px]">
-          <div class="flex items-center gap-2 text-rose">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7-4.5-7-10a4 4 0 017-2.5A4 4 0 0119 11c0 5.5-7 10-7 10z"/></svg>
-            <span class="text-xs uppercase tracking-[0.18em] font-medium">Met liefde</span>
-          </div>
-          <p class="mt-2 text-sm text-bark">"Een ontspannen hond is het mooiste resultaat."</p>
-          <p class="mt-1 text-xs text-bark-mute">— Vera</p>
-        </div>
-      </div>
-    </div>
-  </section>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
 
-  <!-- ── PILLARS ────────────────────────────────────────── -->
-  <section class="py-20 bg-cream-dark/50 border-y border-line/40">
-    <div class="container-soft">
-      <div class="max-w-2xl">
-        <span class="eyebrow">Waarom Vera's Trimboetiekje</span>
-        <h2 class="mt-4 text-3xl md:text-4xl font-display">
-          Iedere hond verdient een behandeling die past bij <span class="italic text-rose">zijn of haar</span> vacht, gedrag en behoeften.
-        </h2>
-      </div>
-      <div class="mt-12 grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
-        {pillars.map((p) => (
-          <div class="reveal bg-cream rounded-2xl p-6 border border-line/60 hover:border-rose/40 transition-colors">
-            <span class="grid place-items-center w-11 h-11 rounded-full bg-nude/30 text-rose mb-4">
-              <ServiceIcon name={p.icon} />
-            </span>
-            <h3 class="font-display text-lg">{p.title}</h3>
-            <p class="mt-2 text-sm leading-relaxed">{p.text}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
+  <body>
+    <main class="relative min-h-screen overflow-hidden grid place-items-center px-6 py-20">
+      <!-- Zachte sfeerblobs -->
+      <div class="soft-blob" style="width:34rem;height:34rem;background:var(--color-nude);top:-12rem;left:-10rem;"></div>
+      <div class="soft-blob" style="width:30rem;height:30rem;background:var(--color-rose);bottom:-11rem;right:-9rem;opacity:0.4;"></div>
+      <div class="soft-blob" style="width:24rem;height:24rem;background:var(--color-beige-dark);top:55%;left:8%;opacity:0.3;"></div>
 
-  <!-- ── BEFORE / AFTER ─────────────────────────────────── -->
-  <section class="py-24">
-    <div class="container-soft">
-      <div class="grid lg:grid-cols-2 gap-12 items-center">
-        <div class="reveal">
-          <span class="eyebrow">Voor &amp; na</span>
-          <h2 class="mt-4 text-3xl md:text-4xl font-display leading-tight">
-            Sleep en zie het <span class="italic text-rose">verschil</span>.
-          </h2>
-          <p class="mt-5 max-w-md">
-            Iedere trimbeurt is anders. Soms een kleine opfrissing, soms een complete transformatie — altijd met aandacht voor de vacht én voor het comfort van jouw hond.
-          </p>
-          <div class="mt-7 flex items-center gap-3 text-sm text-bark-mute">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
-              <path d="M9 6l-4 6 4 6M15 6l4 6-4 6"/>
-            </svg>
-            <span>Sleep de schuif om voor en na te vergelijken</span>
-          </div>
-        </div>
-
-        <div class="reveal">
-          <BeforeAfterSlider
-            beforeSrc={photos.beforeBefore.src}
-            afterSrc={photos.beforeAfter.src}
-            alt="Voor en na trimbeurt bij Vera's Trimboetiekje"
-          />
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── ABOUT PREVIEW ──────────────────────────────────── -->
-  <section class="py-24 bg-beige/30">
-    <div class="container-soft grid lg:grid-cols-12 gap-12 items-center">
-      <div class="lg:col-span-5 reveal">
-        <Placeholder
-          src={photos.about.src}
-          alt={photos.about.alt}
-          variant="nude"
-          ratio="4 / 5"
-          rounded="28px"
-          width={900}
-          class="shadow-card"
-        />
-      </div>
-      <div class="lg:col-span-7 reveal">
-        <span class="eyebrow">Even voorstellen</span>
-        <h2 class="mt-4 text-3xl md:text-4xl font-display">
-          Hoi, ik ben <span class="italic text-rose">Vera</span>.
-        </h2>
-        <div class="mt-5 space-y-4 max-w-xl">
-          <p>
-            Mijn liefde voor honden is altijd al aanwezig geweest, maar werd pas écht versterkt toen mijn twee cockapoos Beer en Billy in mijn leven kwamen. Met hun vrolijke karakter en zachte vacht hebben zij mij laten zien hoe belangrijk goede vachtverzorging is — maar vooral hoe belangrijk het is dat een hond zich veilig voelt.
-          </p>
-          <p>
-            In mijn salon neem ik de tijd, zonder haast en met volledige aandacht voor jouw hond. Geen drukte, geen stress — een rustige omgeving waarin jouw hond stap voor stap kan wennen.
-          </p>
-        </div>
-        <a href="/over-mij" class="inline-flex items-center gap-2 mt-7 text-rose hover:text-rose-dark transition-colors text-sm font-medium">
-          Lees meer over mij
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-            <path d="M5 12h14M13 5l7 7-7 7"/>
+      <div class="relative z-10 w-full max-w-xl mx-auto flex flex-col items-center text-center">
+        <!-- Merkbadge -->
+        <div class="cs-badge cs-anim" style="animation-delay:0ms" aria-hidden="true">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.7">
+            <circle cx="7" cy="9" r="1.7" fill="currentColor" stroke="none" />
+            <circle cx="12" cy="6.4" r="1.7" fill="currentColor" stroke="none" />
+            <circle cx="17" cy="9" r="1.7" fill="currentColor" stroke="none" />
+            <circle cx="4.6" cy="13.6" r="1.5" fill="currentColor" stroke="none" />
+            <circle cx="19.4" cy="13.6" r="1.5" fill="currentColor" stroke="none" />
+            <path d="M8.4 17.4c0-2.3 1.5-3.7 3.6-3.7s3.6 1.4 3.6 3.7c0 1.8-1.5 2.7-3.6 2.7s-3.6-.9-3.6-2.7z" fill="currentColor" stroke="none" />
           </svg>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── SERVICES ───────────────────────────────────────── -->
-  <section class="py-24">
-    <div class="container-soft">
-      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
-        <div class="max-w-xl">
-          <span class="eyebrow">Diensten</span>
-          <h2 class="mt-4 text-3xl md:text-4xl font-display">
-            Behandelingen op maat, <span class="italic text-rose">altijd in alle rust</span>.
-          </h2>
         </div>
-        <a href="/diensten" class="btn-secondary self-start md:self-auto">Alle diensten</a>
-      </div>
 
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-        {services.slice(0, 6).map((s) => (
-          <a
-            href={`/diensten#${s.slug}`}
-            class="reveal group bg-cream rounded-2xl p-6 border border-line/60 hover:border-rose/40 hover:shadow-soft transition-all flex flex-col"
-          >
-            <span class="grid place-items-center w-12 h-12 rounded-full bg-beige/60 text-rose mb-5 group-hover:bg-nude/40 transition-colors">
-              <ServiceIcon name={s.icon} />
-            </span>
-            <h3 class="font-display text-xl">{s.title}</h3>
-            <p class="mt-2 text-sm flex-1">{s.short}</p>
-            <span class="mt-5 inline-flex items-center gap-1.5 text-rose text-sm font-medium">
-              Ontdek meer
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="group-hover:translate-x-0.5 transition-transform">
-                <path d="M5 12h14M13 5l7 7-7 7"/>
-              </svg>
-            </span>
+        <p class="eyebrow cs-anim mt-7" style="animation-delay:90ms">
+          Hondentrimsalon in {site.address.city}
+        </p>
+
+        <h1 class="cs-title cs-anim mt-4" style="animation-delay:170ms">
+          Vera&rsquo;s <span class="italic text-rose">Trimboetiekje</span>
+        </h1>
+
+        <span class="cs-status cs-anim mt-6" style="animation-delay:250ms">
+          <span class="cs-dot"></span>
+          Binnenkort online
+        </span>
+
+        <p class="cs-lead cs-anim mt-7" style="animation-delay:330ms">
+          We werken met veel liefde aan onze nieuwe website. Hier leest u straks
+          alles over onze rustige trimsalon, waar elke hond met aandacht en in
+          alle rust verzorgd wordt.
+        </p>
+
+        <p class="cs-lead cs-sub cs-anim mt-4" style="animation-delay:390ms">
+          Wilt u nu al een afspraak maken of heeft u een vraag? Stuur gerust een
+          berichtje, dan denken we met u mee.
+        </p>
+
+        <div class="cs-actions cs-anim mt-9" style="animation-delay:470ms">
+          <a href={site.whatsappUrl} target="_blank" rel="noopener" class="btn-primary">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M17.5 14.4c-.3-.15-1.7-.83-1.96-.93-.26-.1-.45-.14-.64.14-.19.28-.73.92-.9 1.11-.16.19-.33.21-.61.07-.28-.14-1.18-.43-2.25-1.38-.83-.74-1.39-1.66-1.55-1.94-.16-.28-.02-.43.12-.57.13-.13.28-.33.42-.5.14-.16.18-.28.28-.47.09-.19.05-.35-.02-.49-.07-.14-.64-1.54-.88-2.11-.23-.55-.46-.48-.64-.49h-.54c-.19 0-.49.07-.75.35-.26.28-.98.96-.98 2.34s1.01 2.71 1.15 2.9c.14.19 1.98 3.02 4.8 4.24.67.29 1.19.46 1.6.59.67.21 1.28.18 1.76.11.54-.08 1.66-.68 1.89-1.33.23-.65.23-1.21.16-1.33-.07-.12-.25-.19-.53-.33z M12 2.2A9.8 9.8 0 0 0 3.5 17l-1.3 4.8 4.9-1.29A9.8 9.8 0 1 0 12 2.2zm0 17.9c-1.48 0-2.93-.4-4.19-1.15l-.3-.18-2.86.75.76-2.79-.2-.29A8.13 8.13 0 1 1 12 20.1z" />
+            </svg>
+            Stuur een berichtje
           </a>
-        ))}
-      </div>
-    </div>
-  </section>
+          <a href={site.instagram} target="_blank" rel="noopener" class="btn-secondary">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+              <rect x="3" y="3" width="18" height="18" rx="5" />
+              <circle cx="12" cy="12" r="4" />
+              <circle cx="17.5" cy="6.5" r="0.9" fill="currentColor" stroke="none" />
+            </svg>
+            Volg ons op Instagram
+          </a>
+        </div>
 
-  <!-- ── CTA ────────────────────────────────────────────── -->
-  <section class="py-24">
-    <div class="container-soft">
-      <div class="relative overflow-hidden rounded-[32px] bg-gradient-to-br from-nude via-rose to-rose-dark text-cream p-10 md:p-16">
-        <div class="soft-blob bg-cream/30 w-[280px] h-[280px] -top-20 -right-20"></div>
-        <div class="relative max-w-2xl">
-          <h2 class="font-display text-3xl md:text-5xl text-cream leading-tight">
-            Klaar voor een rustige, <span class="italic">liefdevolle</span> trimbeurt?
-          </h2>
-          <p class="mt-5 text-cream/85 text-lg max-w-lg">
-            Plan eenvoudig online een afspraak in de agenda, of stuur me een berichtje via WhatsApp — ik denk graag met je mee.
-          </p>
-          <div class="mt-8 flex flex-wrap gap-3">
-            <a href={site.bookingUrl}
-              class="inline-flex items-center gap-2 bg-cream text-bark px-6 py-3 rounded-full font-medium hover:bg-cream/90 transition-colors">
-              Plan een afspraak
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-            </a>
-            <a href={site.whatsappUrl} target="_blank" rel="noopener"
-              class="inline-flex items-center gap-2 border border-cream/40 text-cream px-6 py-3 rounded-full font-medium hover:bg-cream/10 transition-colors">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3.5A11.7 11.7 0 0012 0C5.4 0 0 5.4 0 12c0 2.1.5 4.1 1.6 5.9L0 24l6.3-1.6A11.9 11.9 0 0012 24c6.6 0 12-5.4 12-12 0-3.2-1.2-6.2-3.5-8.5zM12 21.8a9.8 9.8 0 01-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4A9.8 9.8 0 012.2 12C2.2 6.6 6.6 2.2 12 2.2S21.8 6.6 21.8 12 17.4 21.8 12 21.8z"/></svg>
-              WhatsApp
-            </a>
-          </div>
+        <div class="cs-rule cs-anim" style="animation-delay:560ms" aria-hidden="true"></div>
+
+        <div class="cs-meta cs-anim" style="animation-delay:620ms">
+          <span>{site.address.street}, {site.address.postalCode} {site.address.city}</span>
+          <span class="cs-meta-sep" aria-hidden="true">·</span>
+          <span>{site.hours}</span>
         </div>
       </div>
-    </div>
-  </section>
-</Layout>
+
+      <!-- Agensea-signatuur -->
+      <a
+        href="https://agensea.nl"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Website ontworpen en gebouwd door Agensea"
+        class="cs-credit cs-anim"
+        style="animation-delay:760ms"
+      >
+        <span class="cs-credit-label">Gebouwd door</span>
+        <img src="/brand/agensea-logo.svg" alt="Agensea" class="cs-credit-logo" width="120" height="32" loading="lazy" decoding="async" />
+      </a>
+    </main>
+
+    <style>
+      /* ── Merkbadge ─────────────────────────────── */
+      .cs-badge {
+        display: grid;
+        place-items: center;
+        width: 4.5rem;
+        height: 4.5rem;
+        border-radius: 999px;
+        background: var(--color-beige);
+        color: var(--color-rose);
+        box-shadow: var(--shadow-soft);
+        border: 1px solid rgba(201, 155, 130, 0.25);
+      }
+
+      /* ── Titel ─────────────────────────────────── */
+      .cs-title {
+        font-family: var(--font-display);
+        font-weight: 400;
+        letter-spacing: -0.02em;
+        line-height: 1.04;
+        color: var(--color-bark);
+        font-size: clamp(2.6rem, 7vw, 4.4rem);
+      }
+
+      /* ── Status-pill ───────────────────────────── */
+      .cs-status {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.55rem;
+        padding: 0.4rem 0.95rem;
+        border-radius: 999px;
+        background: rgba(250, 246, 240, 0.8);
+        border: 1px solid var(--color-line);
+        font-size: 0.7rem;
+        font-weight: 500;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--color-bark-soft);
+        backdrop-filter: blur(4px);
+      }
+      .cs-dot {
+        width: 0.45rem;
+        height: 0.45rem;
+        border-radius: 999px;
+        background: var(--color-rose);
+        animation: cs-pulse 2.4s ease-in-out infinite;
+      }
+
+      /* ── Lopende tekst ─────────────────────────── */
+      .cs-lead {
+        max-width: 34rem;
+        color: var(--color-bark-soft);
+        font-size: 1.05rem;
+        line-height: 1.75;
+      }
+      .cs-sub {
+        font-size: 0.98rem;
+        color: var(--color-bark-mute);
+      }
+
+      /* ── Knoppen ───────────────────────────────── */
+      .cs-actions {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 0.85rem;
+      }
+
+      /* ── Scheidingslijn + meta ─────────────────── */
+      .cs-rule {
+        width: 3rem;
+        height: 1px;
+        background: var(--color-line);
+        margin-top: 3rem;
+      }
+      .cs-meta {
+        margin-top: 1.5rem;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 0.6rem;
+        font-size: 0.82rem;
+        color: var(--color-bark-mute);
+      }
+      .cs-meta-sep {
+        opacity: 0.4;
+      }
+
+      /* ── Agensea-signatuur ─────────────────────── */
+      .cs-credit {
+        position: absolute;
+        bottom: 1.75rem;
+        left: 50%;
+        transform: translateX(-50%);
+        display: inline-flex;
+        align-items: center;
+        gap: 0.65rem;
+        z-index: 10;
+        text-decoration: none;
+      }
+      .cs-credit-label {
+        font-size: 0.65rem;
+        font-weight: 500;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--color-bark-mute);
+        opacity: 0.55;
+        transition: opacity 500ms cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .cs-credit-logo {
+        height: 19px;
+        width: auto;
+        filter: brightness(0);
+        opacity: 0.55;
+        transition:
+          opacity 500ms cubic-bezier(0.16, 1, 0.3, 1),
+          filter 500ms cubic-bezier(0.16, 1, 0.3, 1),
+          transform 500ms cubic-bezier(0.16, 1, 0.3, 1);
+        transform-origin: left center;
+      }
+      .cs-credit:hover .cs-credit-label {
+        opacity: 0.9;
+      }
+      .cs-credit:hover .cs-credit-logo {
+        opacity: 1;
+        filter:
+          brightness(0)
+          drop-shadow(0 0 6px rgba(99, 102, 241, 0.35))
+          drop-shadow(0 0 14px rgba(99, 102, 241, 0.18));
+        transform: scale(1.03);
+      }
+      .cs-credit:focus-visible {
+        outline: 2px solid #6366f1;
+        outline-offset: 6px;
+        border-radius: 2px;
+      }
+
+      /* ── Entree-animatie ───────────────────────── */
+      @keyframes cs-rise {
+        from {
+          opacity: 0;
+          transform: translateY(18px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes cs-pulse {
+        0%,
+        100% {
+          box-shadow: 0 0 0 0 rgba(201, 155, 130, 0.5);
+        }
+        70% {
+          box-shadow: 0 0 0 7px rgba(201, 155, 130, 0);
+        }
+      }
+      html.js .cs-anim {
+        opacity: 0;
+        animation: cs-rise 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html.js .cs-anim {
+          opacity: 1;
+          animation: none;
+        }
+        .cs-dot {
+          animation: none;
+        }
+      }
+    </style>
+  </body>
+</html>
