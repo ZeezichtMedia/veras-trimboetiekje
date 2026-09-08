@@ -32,6 +32,9 @@ const canonical = new URL(Astro.url.pathname, Astro.site).toString();
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
+    <!-- Preview-fase: de site mag nog niet in Google verschijnen.
+         Weghalen bij livegang (zie src/data/site.ts). -->
+    <meta name="robots" content="noindex, nofollow" />
 
     <meta property="og:type" content="website" />
     <meta property="og:title" content={pageTitle} />

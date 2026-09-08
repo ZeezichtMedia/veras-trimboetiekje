@@ -1,11 +1,11 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Placeholder from '../components/Placeholder.astro';
-import BeforeAfterSlider from '../components/BeforeAfterSlider.astro';
-import ServiceIcon from '../components/ServiceIcon.astro';
-import { services } from '../data/services';
-import { site } from '../data/site';
-import { photos } from '../data/images';
+import Layout from '../../layouts/Layout.astro';
+import Placeholder from '../../components/Placeholder.astro';
+import BeforeAfterSlider from '../../components/BeforeAfterSlider.astro';
+import ServiceIcon from '../../components/ServiceIcon.astro';
+import { services } from '../../data/services';
+import { base, site } from '../../data/site';
+import { photos } from '../../data/images';
 
 const pillars = [
   { icon: 'leaf', title: 'Rust voorop', text: 'Geen drukte, geen haast — een rustige omgeving waarin jouw hond stap voor stap kan wennen.' },
@@ -43,7 +43,7 @@ const pillars = [
               <path d="M5 12h14M13 5l7 7-7 7"/>
             </svg>
           </a>
-          <a href="/diensten" class="btn-secondary">Bekijk diensten</a>
+          <a href={`${base}/diensten`} class="btn-secondary">Bekijk diensten</a>
         </div>
 
         <div class="mt-10 flex items-center gap-5 text-sm text-bark-mute">
@@ -193,7 +193,7 @@ const pillars = [
             In mijn salon neem ik de tijd, zonder haast en met volledige aandacht voor jouw hond. Geen drukte, geen stress — een rustige omgeving waarin jouw hond stap voor stap kan wennen.
           </p>
         </div>
-        <a href="/over-mij" class="inline-flex items-center gap-2 mt-7 text-rose hover:text-rose-dark transition-colors text-sm font-medium">
+        <a href={`${base}/over-mij`} class="inline-flex items-center gap-2 mt-7 text-rose hover:text-rose-dark transition-colors text-sm font-medium">
           Lees meer over mij
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
             <path d="M5 12h14M13 5l7 7-7 7"/>
@@ -213,13 +213,13 @@ const pillars = [
             Behandelingen op maat, <span class="italic text-rose">altijd in alle rust</span>.
           </h2>
         </div>
-        <a href="/diensten" class="btn-secondary self-start md:self-auto">Alle diensten</a>
+        <a href={`${base}/diensten`} class="btn-secondary self-start md:self-auto">Alle diensten</a>
       </div>
 
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
         {services.slice(0, 6).map((s) => (
           <a
-            href={`/diensten#${s.slug}`}
+            href={`${base}/diensten#${s.slug}`}
             class="reveal group bg-cream rounded-2xl p-6 border border-line/60 hover:border-rose/40 hover:shadow-soft transition-all flex flex-col"
           >
             <span class="grid place-items-center w-12 h-12 rounded-full bg-beige/60 text-rose mb-5 group-hover:bg-nude/40 transition-colors">

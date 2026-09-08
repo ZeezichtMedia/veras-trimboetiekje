@@ -2,17 +2,20 @@
 /* ──────────────────────────────────────────────────────────────
    TIJDELIJKE "BINNENKORT ONLINE"-PAGINA
    ----------------------------------------------------------------
-   Deze pagina vervangt voorlopig de volledige website. De echte
-   site staat ongewijzigd in  src/pages/_full-site/  (Astro negeert
-   mappen die met een underscore beginnen, dus die routes bouwen
-   niet mee).
+   Deze pagina is wat bezoekers op de homepage zien. De volledige
+   site is al af en staat achter een geheim pad:
 
-   TERUGZETTEN bij livegang:
-     1. Verplaats alle bestanden uit  src/pages/_full-site/  terug
-        naar  src/pages/  (de echte index.astro overschrijft dan
-        dit bestand).
-     2. Verwijder de lege  _full-site  map.
-   Eén handeling, verder hoeft er niets aangepast te worden.
+       /vera-e11a9f0e/
+
+   Dat pad is bewust onraadbaar, staat op noindex en zit niet in de
+   sitemap, zodat alleen wie de link heeft de site kan bekijken.
+
+   TERUGZETTEN bij livegang (3 stappen, staan ook in src/data/site.ts):
+     1. Zet  base  in  src/data/site.ts  op een lege string ('').
+     2. Verplaats alles uit  src/pages/vera-e11a9f0e/  naar
+        src/pages/  (de echte index.astro overschrijft dit bestand).
+     3. Haal de noindex-meta uit  src/layouts/Layout.astro  en de
+        sitemap-filter uit  astro.config.mjs  weg.
    ────────────────────────────────────────────────────────────── */
 import '../styles/global.css';
 import { site } from '../data/site';

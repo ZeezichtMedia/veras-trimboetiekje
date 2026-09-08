@@ -1,6 +1,6 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import { site } from '../data/site';
+import Layout from '../../layouts/Layout.astro';
+import { base, site } from '../../data/site';
 
 const sections = [
   {
@@ -155,7 +155,7 @@ const sections = [
     <div class="container-soft max-w-3xl">
       <div class="bg-beige/40 rounded-[28px] p-8 md:p-10 text-center border border-line/60">
         <p class="text-sm text-bark-mute">
-          Vragen over de voorwaarden? <a href="/contact" class="text-rose hover:underline">Neem gerust contact op</a> — ik leg ze graag toe.
+          Vragen over de voorwaarden? <a href={`${base}/contact`} class="text-rose hover:underline">Neem gerust contact op</a> — ik leg ze graag toe.
         </p>
         <a href={site.bookingUrl} class="btn-primary mt-5">Plan een afspraak</a>
       </div>

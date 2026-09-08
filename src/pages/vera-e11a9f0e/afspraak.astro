@@ -1,6 +1,6 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import { site } from '../data/site';
+import Layout from '../../layouts/Layout.astro';
+import { base, site } from '../../data/site';
 
 const steps = [
   { num: '01', title: 'Kies een dienst', text: 'Selecteer in de agenda de behandeling die past bij jouw hond.' },
@@ -69,7 +69,7 @@ const steps = [
             </li>
             <li class="flex gap-3">
               <span class="text-rose mt-1">·</span>
-              <span>Bij het maken van een afspraak ga je akkoord met de <a href="/voorwaarden" class="text-rose hover:underline">algemene voorwaarden</a>.</span>
+              <span>Bij het maken van een afspraak ga je akkoord met de <a href={`${base}/voorwaarden`} class="text-rose hover:underline">algemene voorwaarden</a>.</span>
             </li>
           </ul>
         </div>

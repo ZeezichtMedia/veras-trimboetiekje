@@ -1,8 +1,14 @@
 ---
-import { navItems, site } from '../data/site';
+import { base, navItems, site } from '../data/site';
 
-const path = Astro.url.pathname;
-const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWith(href));
+// Trailing slashes wegstrippen zodat /pad en /pad/ hetzelfde matchen.
+const strip = (v: string) => v.replace(/\/+$/, '') || '/';
+const path = strip(Astro.url.pathname);
+const home = strip(`${base}/`);
+const isActive = (href: string) => {
+  const h = strip(href);
+  return h === home ? path === home : path.startsWith(h);
+};
 ---
 
 <!-- Topbar — secundaire links (algemene voorwaarden bovenaan op elke pagina) -->
@@ -10,13 +16,13 @@ const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWit
   <div class="container-soft flex items-center justify-end gap-5 py-1.5 text-[0.7rem] tracking-[0.08em]">
     <span class="hidden sm:inline">Uitsluitend op afspraak</span>
     <span class="hidden sm:inline opacity-40">·</span>
-    <a href="/voorwaarden" class="hover:text-rose transition-colors">Algemene voorwaarden</a>
+    <a href={`${base}/voorwaarden`} class="hover:text-rose transition-colors">Algemene voorwaarden</a>
   </div>
 </div>
 
 <header class="sticky top-0 z-40 backdrop-blur bg-cream/85 border-b border-line/60">
   <div class="container-soft flex items-center justify-between gap-6 py-4">
-    <a href="/" class="flex items-center gap-2 group" aria-label="Home — {site.name}">
+    <a href={`${base}/`} class="flex items-center gap-2 group" aria-label="Home — {site.name}">
       <span class="grid place-items-center w-9 h-9 rounded-full bg-nude/40 text-bark transition-colors group-hover:bg-nude/60">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <circle cx="7" cy="9" r="2" />

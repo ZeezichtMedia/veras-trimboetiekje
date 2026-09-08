@@ -1,10 +1,10 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import ServiceIcon from '../components/ServiceIcon.astro';
-import Placeholder from '../components/Placeholder.astro';
-import { services } from '../data/services';
-import { site } from '../data/site';
-import { serviceImages } from '../data/images';
+import Layout from '../../layouts/Layout.astro';
+import ServiceIcon from '../../components/ServiceIcon.astro';
+import Placeholder from '../../components/Placeholder.astro';
+import { services } from '../../data/services';
+import { base, site } from '../../data/site';
+import { serviceImages } from '../../data/images';
 ---
 
 <Layout
@@ -58,7 +58,7 @@ import { serviceImages } from '../data/images';
               ))}
             </div>
             <div class="mt-6 flex flex-wrap gap-3">
-              <a href="/prijzen" class="btn-secondary text-sm">Bekijk prijzen</a>
+              <a href={`${base}/prijzen`} class="btn-secondary text-sm">Bekijk prijzen</a>
               <a href={site.bookingUrl} class="btn-primary text-sm">Plan een afspraak</a>
             </div>
           </div>
@@ -79,7 +79,7 @@ import { serviceImages } from '../data/images';
         </p>
         <div class="mt-7 flex flex-wrap justify-center gap-3">
           <a href={site.whatsappUrl} target="_blank" rel="noopener" class="btn-primary">WhatsApp Vera</a>
-          <a href="/contact" class="btn-secondary">Naar contact</a>
+          <a href={`${base}/contact`} class="btn-secondary">Naar contact</a>
         </div>
       </div>
     </div>

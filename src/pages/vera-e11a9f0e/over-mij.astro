@@ -1,8 +1,8 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Placeholder from '../components/Placeholder.astro';
-import { site } from '../data/site';
-import { photos } from '../data/images';
+import Layout from '../../layouts/Layout.astro';
+import Placeholder from '../../components/Placeholder.astro';
+import { base, site } from '../../data/site';
+import { photos } from '../../data/images';
 ---
 
 <Layout
@@ -84,7 +84,7 @@ import { photos } from '../data/images';
 
         <div class="mt-10 flex flex-wrap gap-3">
           <a href={site.bookingUrl} class="btn-primary">Plan een afspraak</a>
-          <a href="/contact" class="btn-secondary">Stel een vraag</a>
+          <a href={`${base}/contact`} class="btn-secondary">Stel een vraag</a>
         </div>
       </div>
     </div>
