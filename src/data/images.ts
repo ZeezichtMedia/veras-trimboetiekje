@@ -2,9 +2,10 @@
 // public/photos/ en zijn daar al op maat gesneden voor hun plek in de
 // layout, dus ze hoeven in de browser niet meer geschaald te worden.
 //
-// De diensten waar nog geen eigen foto van is, staan bewust NIET in
-// serviceImages: de Placeholder valt dan terug op het pootje met
-// "foto volgt", in plaats van op een beeld dat er niet bij hoort.
+// De dienstenpagina heeft bewust geen foto per dienst: van de behandelingen
+// zelf bestaat nog geen eigen beeldmateriaal, en een salon verbeelden met
+// foto's die er niet gemaakt zijn is niet eerlijk. Die pagina draait op
+// iconen plus het sfeerbeeld hieronder.
 
 export const photos = {
   hero: {
@@ -27,13 +28,9 @@ export const photos = {
     { src: '/photos/beer.jpg', alt: 'Beer, de zwarte cockapoo van Vera' },
     { src: '/photos/billy.jpg', alt: 'Billy, de blonde cockapoo van Vera' },
   ],
-} as const;
-
-// Per dienst een eigen foto. Alleen invullen wat er echt is: een dienst
-// die hier ontbreekt, krijgt vanzelf de "foto volgt"-placeholder.
-export const serviceImages: Record<string, { src: string; alt: string }> = {
-  'knippen-en-scheren': {
-    src: '/photos/dienst-knippen-en-scheren.jpg',
+  // Sfeerbeeld bovenaan de dienstenpagina.
+  tools: {
+    src: '/photos/trimgereedschap.jpg',
     alt: 'Vera met haar trimschaar en kam',
   },
-};
+} as const;

@@ -22,7 +22,7 @@ const id = `ba-${Math.random().toString(36).slice(2, 9)}`;
   <!-- BEFORE-container: zichtbaar van links tot slider-positie -->
   <div class="ba-side ba-side-before">
     {beforeSrc ? (
-      <img class="ba-img" src={beforeSrc} alt={`${alt} — voor`} />
+      <img class="ba-img" src={beforeSrc} alt={`${alt}, voor de trimbeurt`} />
     ) : (
       <div class="ba-img" style="background:linear-gradient(135deg,#E5D5BE 0%,#CFA68C 100%);" aria-hidden="true">
         <div class="absolute inset-0 grid place-items-center">
@@ -40,7 +40,7 @@ const id = `ba-${Math.random().toString(36).slice(2, 9)}`;
   <!-- AFTER-container: zichtbaar van slider-positie tot rechts -->
   <div class="ba-side ba-side-after">
     {afterSrc ? (
-      <img class="ba-img" src={afterSrc} alt={`${alt} — na`} />
+      <img class="ba-img" src={afterSrc} alt={`${alt}, na de trimbeurt`} />
     ) : (
       <div class="ba-img" style="background:linear-gradient(135deg,#E2BFA9 0%,#B58569 100%);" aria-hidden="true">
         <div class="absolute inset-0 grid place-items-center">
@@ -71,7 +71,7 @@ const id = `ba-${Math.random().toString(36).slice(2, 9)}`;
     max="100"
     value="50"
     class="absolute inset-0 w-full h-full opacity-0 cursor-ew-resize"
-    aria-label={`${alt} — sleep om voor en na te vergelijken`}
+    aria-label={`${alt}. Sleep om voor en na te vergelijken`}
     data-ba-input
   />
 </div>

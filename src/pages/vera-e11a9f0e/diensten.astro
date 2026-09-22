@@ -2,68 +2,77 @@
 import Layout from '../../layouts/Layout.astro';
 import ServiceIcon from '../../components/ServiceIcon.astro';
 import Placeholder from '../../components/Placeholder.astro';
+import { photos } from '../../data/images';
 import { services } from '../../data/services';
 import { base, site } from '../../data/site';
-import { serviceImages } from '../../data/images';
 ---
 
 <Layout
   title="Diensten"
-  description="Een overzicht van alle behandelingen bij Vera's Trimboetiekje — van complete trimbeurt tot puppy wenbeurt en extra verzorging."
+  description="Een overzicht van alle behandelingen bij Vera's Trimboetiekje, van complete trimbeurt tot puppy wenbeurt en extra verzorging."
 >
-  <!-- Header sectie -->
+  <!-- Header: één sterk sfeerbeeld als anker voor de hele pagina, in plaats
+       van een zwakke foto bij elke afzonderlijke dienst. -->
   <section class="relative overflow-hidden pt-16 pb-20">
     <div class="soft-blob bg-nude/30 w-[400px] h-[400px] -top-32 right-0"></div>
-    <div class="container-soft relative">
-      <span class="eyebrow">Diensten</span>
-      <h1 class="mt-4 font-display text-4xl md:text-5xl lg:text-6xl leading-tight max-w-3xl">
-        Iedere hond is anders en verdient een behandeling die <span class="italic text-rose">past bij hem of haar</span>.
-      </h1>
-      <p class="mt-6 max-w-2xl text-lg">
-        In mijn salon werk ik rustig en met aandacht, zodat jouw hond zich op zijn gemak voelt en de behandeling zo prettig mogelijk verloopt. Twijfel je welke behandeling het beste past? Neem gerust contact op — ik denk graag met je mee.
-      </p>
+    <div class="container-soft relative grid lg:grid-cols-12 gap-12 items-center">
+      <div class="lg:col-span-7">
+        <span class="eyebrow">Diensten</span>
+        <h1 class="mt-4 font-display text-4xl md:text-5xl lg:text-6xl leading-tight">
+          Iedere hond is anders en verdient een behandeling die <span class="italic text-rose">past bij hem of haar</span>.
+        </h1>
+        <p class="mt-6 max-w-2xl text-lg">
+          In mijn salon werk ik rustig en met aandacht, zodat jouw hond zich op zijn gemak voelt en de behandeling zo prettig mogelijk verloopt. Twijfel je welke behandeling het beste past? Neem gerust contact op, ik denk graag met je mee.
+        </p>
+      </div>
+
+      <div class="lg:col-span-5 reveal">
+        <Placeholder
+          src={photos.tools.src}
+          alt={photos.tools.alt}
+          variant="beige"
+          ratio="4 / 3"
+          rounded="26px"
+          width={1400}
+          loading="eager"
+          class="shadow-card"
+        />
+      </div>
     </div>
   </section>
 
-  <!-- Diensten lijst -->
+  <!-- Diensten: editorial lijst met haarlijnen. Geen foto's, want een
+       trimbehandeling laat zich niet eerlijk verbeelden met beeld dat niet
+       in deze salon is gemaakt. Het icoon en het nummer dragen de kaart. -->
   <section class="pb-24">
-    <div class="container-soft space-y-8">
+    <div class="container-soft">
       {services.map((s, i) => (
         <article
           id={s.slug}
-          class:list={[
-            'reveal grid lg:grid-cols-12 gap-8 lg:gap-12 items-center bg-cream rounded-[28px] p-6 md:p-10 border border-line/60',
-            i % 2 === 1 ? 'lg:[&>*:first-child]:order-2' : '',
-          ]}
+          class="reveal grid lg:grid-cols-12 gap-x-12 gap-y-6 border-t border-line py-12 md:py-16 scroll-mt-28"
         >
-          <div class="lg:col-span-5">
-            <Placeholder
-              src={serviceImages[s.slug]?.src}
-              alt={serviceImages[s.slug]?.alt ?? s.title}
-              variant={i % 3 === 0 ? 'beige' : i % 3 === 1 ? 'nude' : 'cream'}
-              ratio="4 / 3"
-              rounded="20px"
-              width={900}
-              label={`${s.title} — foto volgt`}
-            />
-          </div>
-          <div class="lg:col-span-7">
-            <span class="grid place-items-center w-12 h-12 rounded-full bg-nude/30 text-rose mb-4">
-              <ServiceIcon name={s.icon} />
+          <div class="lg:col-span-4 flex items-start gap-6">
+            <span class="font-body text-xs tracking-[0.22em] text-bark-mute pt-2 tabular-nums">
+              {String(i + 1).padStart(2, '0')}
             </span>
-            <h2 class="font-display text-2xl md:text-3xl">{s.title}</h2>
-            <div class="mt-4 space-y-3 max-w-xl">
+            <ServiceIcon name={s.icon} size={76} stroke={1.1} class="text-rose shrink-0" />
+          </div>
+
+          <div class="lg:col-span-8 max-w-2xl">
+            <h2 class="font-display text-2xl md:text-3xl leading-tight">{s.title}</h2>
+            <div class="mt-5 space-y-3">
               {s.body.map((p) => (
                 <p>{p}</p>
               ))}
             </div>
-            <div class="mt-6 flex flex-wrap gap-3">
+            <div class="mt-7 flex flex-wrap gap-3">
               <a href={`${base}/prijzen`} class="btn-secondary text-sm">Bekijk prijzen</a>
               <a href={site.bookingUrl} class="btn-primary text-sm">Plan een afspraak</a>
             </div>
           </div>
         </article>
       ))}
+      <div class="border-t border-line"></div>
     </div>
   </section>
 

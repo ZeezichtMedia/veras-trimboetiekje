@@ -8,17 +8,17 @@ import { base, site } from '../../data/site';
 import { photos } from '../../data/images';
 
 const pillars = [
-  { icon: 'leaf', title: 'Rust voorop', text: 'Geen drukte, geen haast — een rustige omgeving waarin jouw hond stap voor stap kan wennen.' },
-  { icon: 'heart', title: 'Tijd voor jouw hond', text: 'Ik neem de tijd voor iedere behandeling. Geen haast, geen druk — alles op een tempo waarin jouw hond zich prettig voelt.' },
+  { icon: 'leaf', title: 'Rust voorop', text: 'Geen drukte, geen haast. Een rustige omgeving waarin jouw hond stap voor stap kan wennen.' },
+  { icon: 'heart', title: 'Tijd voor jouw hond', text: 'Ik neem de tijd voor iedere behandeling. Geen haast, geen druk, alles op een tempo waarin jouw hond zich prettig voelt.' },
   { icon: 'sparkle', title: 'Met aandacht', text: 'Ik kijk naar wat jouw hond nodig heeft, qua vacht én qua gedrag.' },
   { icon: 'paw', title: 'Welzijn eerst', text: 'Een mooi resultaat is mooi, maar een ontspannen hond is het mooiste resultaat.' },
-  { icon: 'star', title: 'Boetiek-gevoel', text: 'Een lieve, persoonlijke salon — alsof je hond bij familie op visite gaat.' },
+  { icon: 'star', title: 'Boetiek-gevoel', text: 'Een lieve, persoonlijke salon. Alsof je hond bij familie op visite gaat.' },
 ];
 ---
 
 <Layout
   title="Hondentrimsalon in Berghem"
-  description="Vera's Trimboetiekje — een rustige, liefdevolle trimsalon in Berghem. Met tijd en aandacht voor de vacht én het welzijn van jouw hond."
+  description="Vera's Trimboetiekje, een rustige, liefdevolle trimsalon in Berghem. Met tijd en aandacht voor de vacht én het welzijn van jouw hond."
 >
   <!-- ── HERO ───────────────────────────────────────────── -->
   <section class="relative overflow-hidden">
@@ -34,7 +34,7 @@ const pillars = [
           voor jouw hond.
         </h1>
         <p class="mt-6 max-w-xl text-lg leading-relaxed">
-          Een rustige, liefdevolle trimsalon waar jouw hond met volledige aandacht en in alle rust verzorgd wordt. Geen drukte, geen stress — alleen tijd voor jou en je hond.
+          Een rustige, liefdevolle trimsalon waar jouw hond met volledige aandacht en in alle rust verzorgd wordt. Geen drukte, geen stress, alleen tijd voor jou en je hond.
         </p>
         <div class="mt-8 flex flex-wrap gap-3">
           <a href={site.bookingUrl} class="btn-primary">
@@ -52,7 +52,7 @@ const pillars = [
               href={site.instagram}
               target="_blank"
               rel="noopener"
-              aria-label={`Instagram — ${site.instagramHandle}`}
+              aria-label={`Instagram, ${site.instagramHandle}`}
               class="relative grid place-items-center w-9 h-9 rounded-full border-2 border-cream bg-nude text-cream hover:z-10 hover:scale-110 transition-transform"
             >
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
@@ -65,7 +65,7 @@ const pillars = [
               href={site.facebook}
               target="_blank"
               rel="noopener"
-              aria-label={`Facebook — ${site.facebookHandle}`}
+              aria-label={`Facebook, ${site.facebookHandle}`}
               class="relative grid place-items-center w-9 h-9 rounded-full border-2 border-cream bg-rose text-cream hover:z-10 hover:scale-110 transition-transform"
             >
               <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -76,7 +76,7 @@ const pillars = [
               href={site.whatsappUrl}
               target="_blank"
               rel="noopener"
-              aria-label={`WhatsApp — ${site.whatsapp}`}
+              aria-label={`WhatsApp, ${site.whatsapp}`}
               class="relative grid place-items-center w-9 h-9 rounded-full border-2 border-cream bg-rose-dark text-cream hover:z-10 hover:scale-110 transition-transform"
             >
               <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -106,7 +106,7 @@ const pillars = [
             <span class="text-xs uppercase tracking-[0.18em] font-medium">Met liefde</span>
           </div>
           <p class="mt-2 text-sm text-bark">"Een ontspannen hond is het mooiste resultaat."</p>
-          <p class="mt-1 text-xs text-bark-mute">— Vera</p>
+          <p class="mt-1 text-xs text-bark-mute">Vera</p>
         </div>
       </div>
     </div>
@@ -124,9 +124,7 @@ const pillars = [
       <div class="mt-12 grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
         {pillars.map((p) => (
           <div class="reveal bg-cream rounded-2xl p-6 border border-line/60 hover:border-rose/40 transition-colors">
-            <span class="grid place-items-center w-11 h-11 rounded-full bg-nude/30 text-rose mb-4">
-              <ServiceIcon name={p.icon} />
-            </span>
+            <ServiceIcon name={p.icon} size={40} stroke={1.2} class="text-rose mb-4" />
             <h3 class="font-display text-lg">{p.title}</h3>
             <p class="mt-2 text-sm leading-relaxed">{p.text}</p>
           </div>
@@ -145,7 +143,7 @@ const pillars = [
             Sleep en zie het <span class="italic text-rose">verschil</span>.
           </h2>
           <p class="mt-5 max-w-md">
-            Iedere trimbeurt is anders. Soms een kleine opfrissing, soms een complete transformatie — altijd met aandacht voor de vacht én voor het comfort van jouw hond.
+            Iedere trimbeurt is anders. Soms een kleine opfrissing, soms een complete transformatie, altijd met aandacht voor de vacht én voor het comfort van jouw hond.
           </p>
           <div class="mt-7 flex items-center gap-3 text-sm text-bark-mute">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
@@ -187,10 +185,10 @@ const pillars = [
         </h2>
         <div class="mt-5 space-y-4 max-w-xl">
           <p>
-            Mijn liefde voor honden is altijd al aanwezig geweest, maar werd pas écht versterkt toen mijn twee cockapoos Beer en Billy in mijn leven kwamen. Met hun vrolijke karakter en zachte vacht hebben zij mij laten zien hoe belangrijk goede vachtverzorging is — maar vooral hoe belangrijk het is dat een hond zich veilig voelt.
+            Mijn liefde voor honden is altijd al aanwezig geweest, maar werd pas écht versterkt toen mijn twee cockapoos Beer en Billy in mijn leven kwamen. Met hun vrolijke karakter en zachte vacht hebben zij mij laten zien hoe belangrijk goede vachtverzorging is, maar vooral hoe belangrijk het is dat een hond zich veilig voelt.
           </p>
           <p>
-            In mijn salon neem ik de tijd, zonder haast en met volledige aandacht voor jouw hond. Geen drukte, geen stress — een rustige omgeving waarin jouw hond stap voor stap kan wennen.
+            In mijn salon neem ik de tijd, zonder haast en met volledige aandacht voor jouw hond. Geen drukte, geen stress. Een rustige omgeving waarin jouw hond stap voor stap kan wennen.
           </p>
         </div>
         <a href={`${base}/over-mij`} class="inline-flex items-center gap-2 mt-7 text-rose hover:text-rose-dark transition-colors text-sm font-medium">
@@ -222,9 +220,12 @@ const pillars = [
             href={`${base}/diensten#${s.slug}`}
             class="reveal group bg-cream rounded-2xl p-6 border border-line/60 hover:border-rose/40 hover:shadow-soft transition-all flex flex-col"
           >
-            <span class="grid place-items-center w-12 h-12 rounded-full bg-beige/60 text-rose mb-5 group-hover:bg-nude/40 transition-colors">
-              <ServiceIcon name={s.icon} />
-            </span>
+            <ServiceIcon
+              name={s.icon}
+              size={44}
+              stroke={1.2}
+              class="text-rose mb-5 group-hover:text-rose-dark transition-colors"
+            />
             <h3 class="font-display text-xl">{s.title}</h3>
             <p class="mt-2 text-sm flex-1">{s.short}</p>
             <span class="mt-5 inline-flex items-center gap-1.5 text-rose text-sm font-medium">
@@ -249,7 +250,7 @@ const pillars = [
             Klaar voor een rustige, <span class="italic">liefdevolle</span> trimbeurt?
           </h2>
           <p class="mt-5 text-cream/85 text-lg max-w-lg">
-            Plan eenvoudig online een afspraak in de agenda, of stuur me een berichtje via WhatsApp — ik denk graag met je mee.
+            Plan eenvoudig online een afspraak in de agenda, of stuur me een berichtje via WhatsApp, ik denk graag met je mee.
           </p>
           <div class="mt-8 flex flex-wrap gap-3">
             <a href={site.bookingUrl}

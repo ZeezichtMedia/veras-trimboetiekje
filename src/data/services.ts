@@ -21,13 +21,13 @@ export const services: Service[] = [
   {
     slug: 'ontwollen',
     title: 'Ontwollen',
-    short: 'Voor honden met veel onderwol — luchtig, licht en comfortabel.',
+    short: 'Voor honden met veel onderwol: luchtig, licht en comfortabel.',
     body: [
       'Sommige honden hebben veel onderwol, wat kan zorgen voor verharen en een zware vacht.',
       'Tijdens een ontwolbehandeling verwijder ik overtollige onderwol, waardoor de vacht weer luchtig aanvoelt en beter kan ademen.',
       'Dit zorgt niet alleen voor een mooier uiterlijk, maar ook voor meer comfort voor jouw hond.',
     ],
-    icon: 'leaf',
+    icon: 'undercoat',
   },
   {
     slug: 'ontklitten',
@@ -38,7 +38,7 @@ export const services: Service[] = [
       'Ik kijk altijd zorgvuldig naar de staat van de vacht en kies de meest diervriendelijke oplossing.',
       'In sommige gevallen is het beter om de vacht kort te scheren, zodat de vacht weer gezond kan teruggroeien en jouw hond zich weer prettig voelt. Mocht dit het geval zijn, dan neem ik altijd even contact met het baasje op.',
     ],
-    icon: 'sparkle',
+    icon: 'detangle',
   },
   {
     slug: 'tussenbeurt',
@@ -49,18 +49,18 @@ export const services: Service[] = [
       'Tijdens deze behandeling wordt jouw hond gewassen en gedroogd en werk ik kleine onderdelen bij zoals het vrij knippen van de oogjes en het netjes maken van de voetjes.',
       'Zo blijft de vacht fris, schoon en in goede conditie tussen de grotere trimbeurten door.',
     ],
-    icon: 'droplet',
+    icon: 'freshen',
   },
   {
     slug: 'kortharige-honden',
     title: 'Kortharige honden',
-    short: 'Wassen en losse haren verwijderen — minder verharen in huis.',
+    short: 'Wassen en losse haren verwijderen, zodat er minder haar in huis blijft.',
     body: [
       'Ook kortharige honden zijn welkom voor verzorging.',
       'Tijdens deze behandeling wordt de vacht gewassen en worden losse haren verwijderd, waardoor de vacht weer schoon en fris aanvoelt.',
       'Dit helpt ook om verharen in huis te verminderen.',
     ],
-    icon: 'paw',
+    icon: 'shorthair',
   },
   {
     slug: 'puppy-wenbeurt',
@@ -72,17 +72,17 @@ export const services: Service[] = [
       'Door dit op een positieve en ontspannen manier te doen, leg ik een goede basis voor toekomstige behandelingen. Alles stap voor stap en stressvrij.',
       'Ik adviseer 2 tot 3 puppy wenbeurten voordat je hond toe is aan een volledige trimbehandeling. Pups zijn welkom vanaf ongeveer 12 weken, mits zij hun eerste vaccinaties hebben gehad.',
     ],
-    icon: 'heart',
+    icon: 'puppy',
   },
   {
     slug: 'extra-verzorging',
     title: 'Extra verzorging',
-    short: 'Kleine verzorgingsmomenten — los te boeken.',
+    short: 'Kleine verzorgingsmomenten, los te boeken.',
     body: [
       'Naast de trimbehandelingen bied ik ook kleine verzorgingsmomenten aan die los geboekt kunnen worden.',
       'Denk aan het knippen van de nagels, het reinigen van de oren en het vrij knippen van de oogjes.',
       'Korte nagels zorgen voor een goede houding, schone oren helpen irritaties te voorkomen en vrij zicht rondom de ogen zorgt voor meer comfort.',
     ],
-    icon: 'star',
+    icon: 'care',
   },
 ];

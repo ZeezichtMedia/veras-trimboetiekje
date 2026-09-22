@@ -7,7 +7,7 @@ export interface PriceGroup {
 
 export const priceGroups: PriceGroup[] = [
   {
-    title: 'Complete trimbehandeling — algemene rassen',
+    title: 'Complete trimbehandeling voor algemene rassen',
     description:
       'Volledige verzorging: wassen, zorgvuldig drogen, ontwollen, knippen of scheren. Inclusief nagels en netjes afwerken.',
     items: [
@@ -49,7 +49,7 @@ export const priceGroups: PriceGroup[] = [
   {
     title: 'Ontwollen',
     description:
-      'Specifieke behandeling voor honden met veel onderwol — overtollige onderwol verwijderen, vacht weer luchtig en licht.',
+      'Specifieke behandeling voor honden met veel onderwol. Overtollige onderwol wordt verwijderd, waardoor de vacht weer luchtig en licht aanvoelt.',
     items: [
       { label: 'Middelgrote hond', price: '€70' },
       { label: 'Grote hond', price: '€90' },
