@@ -30,7 +30,11 @@ const bg = {
   rose: 'linear-gradient(135deg, #E8C4B0 0%, #C99B82 100%)',
 }[variant];
 
-// Unsplash IDs krijgen automatisch optimalisatie-parameters; eigen URLs niet.
+// Unsplash-URL's kunnen op elke breedte geleverd worden, dus daar heeft een
+// srcset zin. Eigen foto's in public/ bestaan maar in één maat: dan is een
+// srcset met drie breedtes een leugen tegen de browser, en laten we hem weg.
+const isUnsplash = !!src && src.includes('images.unsplash.com');
+
 const buildSrc = (raw: string, w: number) => {
   if (raw.includes('images.unsplash.com')) {
     const sep = raw.includes('?') ? '&' : '?';
@@ -47,8 +51,10 @@ const buildSrc = (raw: string, w: number) => {
   {src ? (
     <img
       src={buildSrc(src, width)}
-      srcset={`${buildSrc(src, Math.round(width * 0.6))} ${Math.round(width * 0.6)}w, ${buildSrc(src, width)} ${width}w, ${buildSrc(src, Math.round(width * 1.5))} ${Math.round(width * 1.5)}w`}
-      sizes="(max-width: 768px) 100vw, 50vw"
+      srcset={isUnsplash
+        ? `${buildSrc(src, Math.round(width * 0.6))} ${Math.round(width * 0.6)}w, ${buildSrc(src, width)} ${width}w, ${buildSrc(src, Math.round(width * 1.5))} ${Math.round(width * 1.5)}w`
+        : undefined}
+      sizes={isUnsplash ? '(max-width: 768px) 100vw, 50vw' : undefined}
       alt={alt}
       loading={loading}
       decoding="async"
