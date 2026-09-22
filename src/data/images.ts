@@ -20,13 +20,20 @@ export const photos = {
     src: '/photos/voor-na-na.jpg',
     alt: 'Hond met verzorgde vacht, na de trimbeurt',
   },
+  // Homepage, blok "over mij".
   about: {
     src: '/photos/over-mij.jpg',
     alt: "Vera, eigenaresse van Vera's Trimboetiekje, met haar honden Beer en Billy",
   },
-  beerBilly: [
-    { src: '/photos/beer.jpg', alt: 'Beer, de zwarte cockapoo van Vera' },
-    { src: '/photos/billy.jpg', alt: 'Billy, de blonde cockapoo van Vera' },
+  // Groot portret bovenaan de pagina Over mij. Door de homepage en deze
+  // pagina een eigen foto te geven, zie je niet twee keer hetzelfde beeld.
+  aboutPage: {
+    src: '/photos/over-mij-pagina.jpg',
+    alt: "Vera met haar cockapoos Billy op schoot en Beer naast zich",
+  },
+  dogs: [
+    { src: '/photos/beer.jpg', alt: 'Beer, de zwarte cockapoo van Vera', label: 'Beer' },
+    { src: '/photos/beer-en-billy.jpg', alt: 'Beer en Billy samen op hun kussen', label: 'Beer en Billy' },
   ],
   // Sfeerbeeld bovenaan de dienstenpagina.
   tools: {

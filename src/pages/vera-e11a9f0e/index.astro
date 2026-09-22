@@ -8,11 +8,11 @@ import { base, site } from '../../data/site';
 import { photos } from '../../data/images';
 
 const pillars = [
-  { icon: 'leaf', title: 'Rust voorop', text: 'Geen drukte, geen haast. Een rustige omgeving waarin jouw hond stap voor stap kan wennen.' },
-  { icon: 'heart', title: 'Tijd voor jouw hond', text: 'Ik neem de tijd voor iedere behandeling. Geen haast, geen druk, alles op een tempo waarin jouw hond zich prettig voelt.' },
-  { icon: 'sparkle', title: 'Met aandacht', text: 'Ik kijk naar wat jouw hond nodig heeft, qua vacht én qua gedrag.' },
-  { icon: 'paw', title: 'Welzijn eerst', text: 'Een mooi resultaat is mooi, maar een ontspannen hond is het mooiste resultaat.' },
-  { icon: 'star', title: 'Boetiek-gevoel', text: 'Een lieve, persoonlijke salon. Alsof je hond bij familie op visite gaat.' },
+  { icon: 'leaf-light', title: 'Rust voorop', text: 'Geen drukte, geen haast. Een rustige omgeving waarin jouw hond stap voor stap kan wennen.' },
+  { icon: 'clock-light', title: 'Tijd voor jouw hond', text: 'Ik neem de tijd voor iedere behandeling. Geen haast, geen druk, alles op een tempo waarin jouw hond zich prettig voelt.' },
+  { icon: 'eye-light', title: 'Met aandacht', text: 'Ik kijk naar wat jouw hond nodig heeft, qua vacht én qua gedrag.' },
+  { icon: 'heart-light', title: 'Welzijn eerst', text: 'Een mooi resultaat is mooi, maar een ontspannen hond is het mooiste resultaat.' },
+  { icon: 'flower-light', title: 'Boetiek-gevoel', text: 'Een lieve, persoonlijke salon. Alsof je hond bij familie op visite gaat.' },
 ];
 ---
 
@@ -124,7 +124,7 @@ const pillars = [
       <div class="mt-12 grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
         {pillars.map((p) => (
           <div class="reveal bg-cream rounded-2xl p-6 border border-line/60 hover:border-rose/40 transition-colors">
-            <ServiceIcon name={p.icon} size={40} stroke={1.2} class="text-rose mb-4" />
+            <ServiceIcon name={p.icon} size={40} class="text-rose mb-4" />
             <h3 class="font-display text-lg">{p.title}</h3>
             <p class="mt-2 text-sm leading-relaxed">{p.text}</p>
           </div>
@@ -223,7 +223,6 @@ const pillars = [
             <ServiceIcon
               name={s.icon}
               size={44}
-              stroke={1.2}
               class="text-rose mb-5 group-hover:text-rose-dark transition-colors"
             />
             <h3 class="font-display text-xl">{s.title}</h3>

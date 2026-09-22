@@ -14,8 +14,8 @@ import { photos } from '../../data/images';
     <div class="container-soft relative grid lg:grid-cols-12 gap-12 items-start">
       <div class="lg:col-span-5 lg:sticky lg:top-28 reveal">
         <Placeholder
-          src={photos.about.src}
-          alt={photos.about.alt}
+          src={photos.aboutPage.src}
+          alt={photos.aboutPage.alt}
           variant="nude"
           ratio="4 / 5"
           rounded="28px"
@@ -25,22 +25,22 @@ import { photos } from '../../data/images';
         />
         <div class="mt-5 grid grid-cols-2 gap-3">
           <Placeholder
-            src={photos.beerBilly[0].src}
-            alt="Beer, de cockapoo van Vera"
+            src={photos.dogs[0].src}
+            alt={photos.dogs[0].alt}
             variant="beige"
             ratio="1 / 1"
             rounded="18px"
             width={500}
-            label="Beer"
+            label={photos.dogs[0].label}
           />
           <Placeholder
-            src={photos.beerBilly[1].src}
-            alt="Billy, de cockapoo van Vera"
+            src={photos.dogs[1].src}
+            alt={photos.dogs[1].alt}
             variant="cream"
             ratio="1 / 1"
             rounded="18px"
             width={500}
-            label="Billy"
+            label={photos.dogs[1].label}
           />
         </div>
       </div>

@@ -1,114 +1,43 @@
 ---
-/* Iconenset in één handschrift: getekend op een raster van 48, fijne lijn,
-   ronde uiteinden. Daardoor blijven ze leesbaar op 24px in een lijstje én
-   op 72px als dragend element op de dienstenpagina.
+/* Iconen uit Phosphor (https://phosphoricons.com, MIT), gewicht "light".
+   Die dunne lijn past bij de haarlijnen en de Fraunces-koppen; regular is te
+   zwaar voor deze site en thin valt weg op de kleinere maten.
 
-   Elk dienst-icoon verwijst naar het gereedschap of het resultaat van die
-   behandeling, niet naar een algemeen hondensymbool. */
+   De paden komen uit @iconify-json/ph en worden tijdens de build inline in de
+   HTML gezet. Er gaat dus geen icoonlettertype of losse request naar de
+   browser, en er draait geen extra integratie in de build. */
+
+import phosphor from '@iconify-json/ph/icons.json';
 
 interface Props {
+  /** Naam zonder set-prefix, bv. "scissors-light". */
   name: string;
-  /** Weergavemaat in px. Het raster blijft 48, dus de lijn schaalt mee. */
+  /** Weergavemaat in px. */
   size?: number;
-  /** Lijndikte op het raster van 48. Bij kleine maten iets ophogen. */
-  stroke?: number;
   class?: string;
 }
 
-const { name, size = 24, stroke = 1.3, class: className = '' } = Astro.props;
+const { name, size = 24, class: className = '' } = Astro.props;
 
-/* Vierpuntige glans. r is de straal van punt tot punt. */
-const sparkle = (cx: number, cy: number, r: number) =>
-  `<path d="M${cx} ${cy - r}c${r * 0.2} ${r * 0.62} ${r * 0.38} ${r * 0.8} ${r} ${r}` +
-  `c-${r * 0.62} ${r * 0.2}-${r * 0.8} ${r * 0.38}-${r} ${r}` +
-  `c-${r * 0.2}-${r * 0.62}-${r * 0.38}-${r * 0.8}-${r}-${r}` +
-  `c${r * 0.62}-${r * 0.2} ${r * 0.8}-${r * 0.38} ${r}-${r}Z"/>`;
+const icon = phosphor.icons[name as keyof typeof phosphor.icons];
 
-/* Hondenpoot: drie teentjes en een kussen. s schaalt het geheel. */
-const paw = (cx: number, cy: number, s: number) => `
-  <ellipse cx="${cx - 4.7 * s}" cy="${cy - 2.6 * s}" rx="${2 * s}" ry="${2.3 * s}"/>
-  <ellipse cx="${cx}" cy="${cy - 4.6 * s}" rx="${2 * s}" ry="${2.3 * s}"/>
-  <ellipse cx="${cx + 4.7 * s}" cy="${cy - 2.6 * s}" rx="${2 * s}" ry="${2.3 * s}"/>
-  <path d="M${cx - 4.9 * s} ${cy + 4.4 * s}c0-${3.3 * s} ${2.1 * s}-${5.3 * s} ${4.9 * s}-${5.3 * s}s${4.9 * s} ${2 * s} ${4.9 * s} ${5.3 * s}c0 ${2.6 * s}-${1.9 * s} ${3.9 * s}-${4.9 * s} ${3.9 * s}s-${4.9 * s}-${1.3 * s}-${4.9 * s}-${3.9 * s}Z"/>
-`;
+if (!icon) {
+  throw new Error(
+    `ServiceIcon: icoon "${name}" bestaat niet in Phosphor. ` +
+      `Controleer de naam, inclusief het gewicht (bijvoorbeeld "dog-light").`
+  );
+}
 
-const paths: Record<string, string> = {
-  /* ── Diensten ─────────────────────────────── */
-
-  // Knippen en scheren: trimschaar met slanke bladen.
-  scissors: `
-    <circle cx="11" cy="14.5" r="4.2"/>
-    <circle cx="11" cy="33.5" r="4.2"/>
-    <path d="M14.6 16.7 38.5 32.4"/>
-    <path d="M14.6 31.3 38.5 15.6"/>
-    <circle cx="24.6" cy="24" r="1.3" fill="currentColor" stroke="none"/>
-  `,
-
-  // Ontwollen: trimkam met fijne tanden.
-  undercoat: `
-    <path d="M9.5 15.5h29a2.6 2.6 0 0 1 2.6 2.6v3.3a2.6 2.6 0 0 1-2.6 2.6h-29a2.6 2.6 0 0 1-2.6-2.6v-3.3a2.6 2.6 0 0 1 2.6-2.6Z"/>
-    <path d="M10.4 24v12M14.9 24v12M19.5 24v12M24 24v12M28.5 24v12M33.1 24v12M37.6 24v12"/>
-  `,
-
-  // Ontklitten: twee verstrengelde lussen, een klit in de vacht.
-  detangle: `
-    <path d="M8.5 16.5c4.5-1.4 8 .4 9.6 3.4"/>
-    <path d="M39.5 31.5c-4.5 1.4-8-.4-9.6-3.4"/>
-    <ellipse cx="20.4" cy="24" rx="7.4" ry="5.4" transform="rotate(-34 20.4 24)"/>
-    <ellipse cx="27.6" cy="24" rx="7.4" ry="5.4" transform="rotate(-34 27.6 24)"/>
-  `,
-
-  // Tussenbeurt: waterdruppel met glans. Wassen en drogen.
-  freshen: `
-    <path d="M24 8.5s-10.5 12.4-10.5 19.2a10.5 10.5 0 0 0 21 0C34.5 20.9 24 8.5 24 8.5Z"/>
-    <path d="M18.4 29.2a5.6 5.6 0 0 0 5.6 5.6"/>
-  `,
-
-  // Kortharige honden: hondenkopje met hangoren en korte vacht.
-  shorthair: `
-    <path d="M24 14.6c5.7 0 9.8 4.2 9.8 10.1 0 6.1-4.1 10.6-9.8 10.6s-9.8-4.5-9.8-10.6c0-5.9 4.1-10.1 9.8-10.1Z"/>
-    <path d="M15.2 19.2c-3.3-1.4-6.4.1-7.2 3.2-.8 3.2 1.1 6.4 4.5 7.4"/>
-    <path d="M32.8 19.2c3.3-1.4 6.4.1 7.2 3.2.8 3.2-1.1 6.4-4.5 7.4"/>
-    <circle cx="20.5" cy="23.4" r="1.05" fill="currentColor" stroke="none"/>
-    <circle cx="27.5" cy="23.4" r="1.05" fill="currentColor" stroke="none"/>
-    <path d="M24 27.2c-1 0-1.8.7-1.8 1.5s.8 1.4 1.8 1.4 1.8-.6 1.8-1.4-.8-1.5-1.8-1.5Z" fill="currentColor" stroke="none"/>
-    <path d="M24 30.1v1.6"/>
-    <path d="M24 31.7c-.8 1.1-2.4 1.1-3.1 0M24 31.7c.8 1.1 2.4 1.1 3.1 0"/>
-  `,
-
-  // Puppy wenbeurt: een klein pootje dat met een groot meeloopt.
-  puppy: paw(17.5, 29, 1.15) + paw(34, 16.5, 0.62),
-
-  // Extra verzorging: kleine afwerkingen, de puntjes op de i.
-  care: sparkle(23, 21, 8.6) + sparkle(33.5, 32, 4.6) + sparkle(14.5, 33.5, 3.4),
-
-  /* ── Kernwaarden op de homepage ───────────── */
-
-  leaf: `
-    <path d="M9 39c0-15.5 11.6-27 30-27 0 15.5-11.6 27-30 27Z"/>
-    <path d="M9 39c7.8-7.8 15.4-13.6 24.6-17.6"/>
-  `,
-  heart: `
-    <path d="M24 38.5s-14.5-9.2-14.5-19.6A7.8 7.8 0 0 1 24 14.6a7.8 7.8 0 0 1 14.5 4.3c0 10.4-14.5 19.6-14.5 19.6Z"/>
-  `,
-  sparkle: sparkle(22, 22, 9.4) + sparkle(34, 33, 5),
-  paw: paw(24, 26.5, 1.35),
-  star: `
-    <path d="m24 9.5 4.5 9.1 10 1.5-7.2 7 1.7 10-9-4.7-9 4.7 1.7-10-7.2-7 10-1.5Z"/>
-  `,
-};
+const w = icon.width ?? phosphor.width ?? 256;
+const h = icon.height ?? phosphor.height ?? 256;
 ---
 
 <svg
   width={size}
   height={size}
-  viewBox="0 0 48 48"
-  fill="none"
-  stroke="currentColor"
-  stroke-width={stroke}
-  stroke-linecap="round"
-  stroke-linejoin="round"
+  viewBox={`0 0 ${w} ${h}`}
   class={className}
   aria-hidden="true"
-  set:html={paths[name] ?? paths.paw}
+  focusable="false"
+  set:html={icon.body}
 />
