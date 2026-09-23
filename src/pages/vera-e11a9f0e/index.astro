@@ -7,6 +7,12 @@ import { services } from '../../data/services';
 import { base, site } from '../../data/site';
 import { photos } from '../../data/images';
 
+// Voor/na-schuif staat tijdelijk uit: Vera maakt een nieuwe set die beter
+// bij de rest van de foto's past. Terugzetten = deze op true zetten en de
+// twee bestanden voor-na-voor.jpg en voor-na-na.jpg in public/photos/
+// vervangen door de nieuwe.
+const showBeforeAfter = false;
+
 const pillars = [
   { icon: 'leaf-light', title: 'Rust voorop', text: 'Geen drukte, geen haast. Een rustige omgeving waarin jouw hond stap voor stap kan wennen.' },
   { icon: 'clock-light', title: 'Tijd voor jouw hond', text: 'Ik neem de tijd voor iedere behandeling. Geen haast, geen druk, alles op een tempo waarin jouw hond zich prettig voelt.' },
@@ -134,6 +140,7 @@ const pillars = [
   </section>
 
   <!-- ── BEFORE / AFTER ─────────────────────────────────── -->
+  {showBeforeAfter && (
   <section class="py-24">
     <div class="container-soft">
       <div class="grid lg:grid-cols-2 gap-12 items-center">
@@ -163,6 +170,7 @@ const pillars = [
       </div>
     </div>
   </section>
+  )}
 
   <!-- ── ABOUT PREVIEW ──────────────────────────────────── -->
   <section class="py-24 bg-beige/30">
