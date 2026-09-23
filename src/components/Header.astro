@@ -1,10 +1,10 @@
 ---
-import { base, navItems, site } from '../data/site';
+import { navItems, site } from '../data/site';
 
 // Trailing slashes wegstrippen zodat /pad en /pad/ hetzelfde matchen.
 const strip = (v: string) => v.replace(/\/+$/, '') || '/';
 const path = strip(Astro.url.pathname);
-const home = strip(`${base}/`);
+const home = '/';
 const isActive = (href: string) => {
   const h = strip(href);
   return h === home ? path === home : path.startsWith(h);
@@ -24,12 +24,12 @@ const isActive = (href: string) => {
     <div class="container-soft h-full flex items-center justify-end gap-5 text-[0.7rem] tracking-[0.08em]">
       <span class="hidden sm:inline">Uitsluitend op afspraak</span>
       <span class="hidden sm:inline opacity-40">·</span>
-      <a href={`${base}/voorwaarden`} class="hover:text-rose transition-colors">Algemene voorwaarden</a>
+      <a href="/voorwaarden" class="hover:text-rose transition-colors">Algemene voorwaarden</a>
     </div>
   </div>
 
   <div class="container-soft flex items-center justify-between gap-6 h-[4.5rem] lg:h-20">
-    <a href={`${base}/`} class="brand flex items-center gap-3" aria-label={`Home, ${site.name}`}>
+    <a href="/" class="brand flex items-center gap-3" aria-label={`Home, ${site.name}`}>
       <!-- Logo van Vera. Bovenaan de pagina groot, zodat de tekst in de badge
            te lezen is; het hangt dan over de onderrand van de balk. Zodra je
            scrolt krimpt het in de balk en komt de woordnaam ernaast. Het vak

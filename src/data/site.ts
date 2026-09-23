@@ -1,17 +1,3 @@
-// ──────────────────────────────────────────────────────────────
-// TIJDELIJK PREVIEW-PAD
-// De site staat nog niet publiek. Alle pagina's leven onder
-// /vera-e11a9f0e/ zodat alleen wie de link heeft erbij kan.
-//
-// BIJ LIVEGANG:
-//   1. Zet  base  hieronder op een lege string ('').
-//   2. Verplaats de bestanden uit  src/pages/vera-e11a9f0e/
-//      terug naar  src/pages/  (overschrijft de placeholder-index).
-//   3. Haal de noindex-meta uit  src/layouts/Layout.astro  en de
-//      sitemap-filter uit  astro.config.mjs  weg.
-// ──────────────────────────────────────────────────────────────
-export const base = '/vera-e11a9f0e';
-
 export const site = {
   name: "Vera's Trimboetiekje",
   shortName: "Vera's Trimboetiekje",
@@ -30,16 +16,14 @@ export const site = {
   instagramHandle: '@veras_trimboetiekje',
   facebook: 'https://www.facebook.com/verastrimboetiekje',
   facebookHandle: '@verastrimboetiekje',
-  bookingUrl: `${base}/afspraak-maken`,
-  mapsEmbed:
-    'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2479.5!2d5.5523!3d51.7639!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0!2zNTHCsDQ1JzUwLjAiTiA1wrAzMyc4LjMiRQ!5e0!3m2!1snl!2snl!4v1700000000000',
+  bookingUrl: '/afspraak-maken',
   hours: 'Uitsluitend op afspraak',
 };
 
 export const navItems = [
-  { label: 'Home', href: `${base}/` },
-  { label: 'Diensten', href: `${base}/diensten` },
-  { label: 'Prijzen', href: `${base}/prijzen` },
-  { label: 'Over mij', href: `${base}/over-mij` },
-  { label: 'Contact', href: `${base}/contact` },
+  { label: 'Home', href: '/' },
+  { label: 'Diensten', href: '/diensten' },
+  { label: 'Prijzen', href: '/prijzen' },
+  { label: 'Over mij', href: '/over-mij' },
+  { label: 'Contact', href: '/contact' },
 ];

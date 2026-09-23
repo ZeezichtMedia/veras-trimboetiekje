@@ -5,11 +5,10 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://verastrimboetiekje.nl',
-  // Preview-fase: alleen de homepage in de sitemap. Het geheime pad mag
-  // daar nooit in belanden, anders is de code publiek. Filter weghalen
-  // bij livegang (zie src/data/site.ts).
-  integrations: [sitemap({ filter: (page) => new URL(page).pathname === '/' })],
+  // Het kale domein stuurt door naar www, dus www is het echte adres.
+  // Canonical-URL's, og:url en de sitemap gebruiken dit.
+  site: 'https://www.verastrimboetiekje.nl',
+  integrations: [sitemap()],
   vite: {
     plugins: [tailwindcss()],
   },
