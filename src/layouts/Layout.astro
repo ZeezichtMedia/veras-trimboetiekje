@@ -27,7 +27,12 @@ const canonical = new URL(Astro.url.pathname, Astro.site).toString();
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#FAF6F0" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <!-- Favicon = het logo uit de gescrolde header, strak op de crème cirkel
+         gesneden (de lichte penseelring wordt op 16-32px een onrustige
+         dubbele rand op donkere tabbladen). -->
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
