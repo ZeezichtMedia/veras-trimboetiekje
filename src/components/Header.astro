@@ -36,6 +36,11 @@ const isActive = (href: string) => {
            houdt altijd de kleine maat, dus de balk verandert nooit van hoogte
            en de pagina springt niet. -->
       <span class="brand-slot relative block w-12 h-12 lg:w-14 lg:h-14 shrink-0">
+        <!-- Twee versies op dezelfde plek. Met tekst alleen als de badge alleen
+             en groot staat (bovenaan op desktop). Overal waar de woordnaam
+             ernaast staat de versie zonder tekst: de naam staat er dan al als
+             echte tekst, en de letters in de badge zijn op die maat toch niet
+             te lezen. -->
         <img
           src="/brand/veras-trimboetiekje-logo.webp"
           alt=""
@@ -43,7 +48,16 @@ const isActive = (href: string) => {
           height="152"
           loading="eager"
           decoding="async"
-          class="brand-logo"
+          class="brand-logo brand-logo--full"
+        />
+        <img
+          src="/brand/veras-trimboetiekje-logo-mark.webp"
+          alt=""
+          width="152"
+          height="152"
+          loading="eager"
+          decoding="async"
+          class="brand-logo brand-logo--mark"
         />
       </span>
       <span class="brand-word font-display text-lg leading-none">
@@ -188,10 +202,17 @@ const isActive = (href: string) => {
       width 520ms cubic-bezier(0.16, 1, 0.3, 1),
       height 520ms cubic-bezier(0.16, 1, 0.3, 1),
       transform 520ms cubic-bezier(0.16, 1, 0.3, 1),
+      opacity 360ms ease,
       scale 400ms ease;
   }
   .brand:hover .brand-logo {
     scale: 1.03;
+  }
+  .brand-logo--full {
+    opacity: 0;
+  }
+  .brand-logo--mark {
+    opacity: 1;
   }
 
   .brand-word {
@@ -246,6 +267,12 @@ const isActive = (href: string) => {
     :global(html.js) .site-header:not(.is-compact):not(.menu-open) .brand-word {
       opacity: 0;
       transform: translateX(-0.5rem);
+    }
+    :global(html.js) .site-header:not(.is-compact):not(.menu-open) .brand-logo--full {
+      opacity: 1;
+    }
+    :global(html.js) .site-header:not(.is-compact):not(.menu-open) .brand-logo--mark {
+      opacity: 0;
     }
   }
 
