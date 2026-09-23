@@ -1,7 +1,8 @@
 {
   "redirects": [
     { "source": "/vera-e11a9f0e", "destination": "/", "permanent": true },
-    { "source": "/vera-e11a9f0e/:path*", "destination": "/:path*", "permanent": true },
-    { "source": "/afspraak", "destination": "/afspraak-maken", "permanent": true }
+    { "source": "/vera-e11a9f0e/(.*)", "destination": "/$1", "permanent": true },
+    { "source": "/afspraak", "destination": "/afspraak-maken", "permanent": true },
+    { "source": "/afspraak/", "destination": "/afspraak-maken", "permanent": true }
   ]
 }
