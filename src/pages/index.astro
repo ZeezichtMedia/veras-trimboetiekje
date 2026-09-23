@@ -6,6 +6,53 @@ import ServiceIcon from '../components/ServiceIcon.astro';
 import { services } from '../data/services';
 import { site } from '../data/site';
 import { photos } from '../data/images';
+import { priceGroups } from '../data/prices';
+
+// Bedrijfsgegevens voor zoekmachines (schema.org). Google leest hieruit naam,
+// adres, ligging, telefoon, prijsklasse en de socials, en koppelt de site zo
+// aan het bedrijf. Alles komt uit site.ts en prices.ts, zodat het niet uit
+// de pas kan lopen met wat er op de pagina staat.
+const origin = Astro.site!.origin;
+const bedragen = priceGroups
+  .flatMap((g) => g.items.map((i) => Number(i.price.replace(/[^\d,]/g, '').replace(',', '.'))))
+  .filter((n) => Number.isFinite(n));
+const euro = (n: number) => `€${Number.isInteger(n) ? n : n.toFixed(2).replace('.', ',')}`;
+const adres = `${site.address.street}, ${site.address.postalCode} ${site.address.city}`;
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebSite',
+      '@id': `${origin}/#website`,
+      url: `${origin}/`,
+      name: site.name,
+      inLanguage: 'nl-NL',
+      publisher: { '@id': `${origin}/#bedrijf` },
+    },
+    {
+      '@type': 'LocalBusiness',
+      '@id': `${origin}/#bedrijf`,
+      name: site.name,
+      description: site.description,
+      url: `${origin}/`,
+      telephone: site.phone.replace(/\s/g, ''),
+      logo: `${origin}/icon-192.png`,
+      image: [`${origin}/og-default.jpg`, `${origin}${photos.hero.src}`],
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: site.address.street,
+        postalCode: site.address.postalCode,
+        addressLocality: site.address.city,
+        addressCountry: 'NL',
+      },
+      // Ligging volgens OpenStreetMap (Halve Morgensstraat 3, Berghem).
+      geo: { '@type': 'GeoCoordinates', latitude: 51.77608, longitude: 5.59038 },
+      hasMap: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(adres)}`,
+      priceRange: `${euro(Math.min(...bedragen))} - ${euro(Math.max(...bedragen))}`,
+      sameAs: [site.instagram, site.facebook],
+    },
+  ],
+};
 
 // Voor/na-schuif staat tijdelijk uit: Vera maakt een nieuwe set die beter
 // bij de rest van de foto's past. Terugzetten = deze op true zetten en de
@@ -26,6 +73,8 @@ const pillars = [
   title="Hondentrimsalon in Berghem"
   description="Vera's Trimboetiekje, een rustige, liefdevolle trimsalon in Berghem. Met tijd en aandacht voor de vacht én het welzijn van jouw hond."
 >
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+
   <!-- ── HERO ───────────────────────────────────────────── -->
   <section class="relative overflow-hidden">
     <div class="soft-blob bg-nude/40 w-[420px] h-[420px] -top-32 -left-24"></div>
