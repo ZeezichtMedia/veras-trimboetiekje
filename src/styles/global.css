@@ -135,6 +135,26 @@
   }
 }
 
+/* ── Ruimte voor de fixed header ─────────────── */
+/* De header ligt fixed over de pagina (zie Header.astro). De eerste sectie
+   van elke pagina begint daarom helemaal bovenaan, zodat haar sfeerkleuren
+   achter de doorzichtige header doorlopen, en krijgt de hoogte van de header
+   als extra ruimte bovenin. Hoogte = topbalk (1.75rem) + balk (4.5rem, vanaf
+   lg 5rem); pas die hier mee aan als de header ooit van maat verandert. */
+:root {
+  --header-h: 6.25rem;
+}
+@media (min-width: 1024px) {
+  :root {
+    --header-h: 6.75rem;
+  }
+}
+main > section:first-child::before {
+  content: "";
+  display: block;
+  height: var(--header-h);
+}
+
 /* ── Reveal animations ───────────────────────── */
 .reveal {
   opacity: 1;
