@@ -14,11 +14,11 @@ export const photos = {
   },
   beforeBefore: {
     src: '/photos/voor-na-voor.jpg',
-    alt: 'Hond met ruige vacht, voor de trimbeurt',
+    alt: 'Pomeriaan met een ruige, pluizige vacht, voor de trimbeurt',
   },
   beforeAfter: {
     src: '/photos/voor-na-na.jpg',
-    alt: 'Hond met verzorgde vacht, na de trimbeurt',
+    alt: 'Dezelfde Pomeriaan met een rond getrimde vacht, na de trimbeurt',
   },
   // Homepage, blok "over mij".
   about: {
